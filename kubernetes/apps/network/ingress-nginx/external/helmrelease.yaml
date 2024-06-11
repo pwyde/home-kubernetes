@@ -43,9 +43,12 @@ spec:
               operator: In
               values: ["external"]
       config:
+        block-user-agents: "GPTBot,~*GPTBot*,ChatGPT-User,~*ChatGPT-User*,Google-Extended,~*Google-Extended*,CCBot,~*CCBot*,Omgilibot,~*Omgilibot*,FacebookBot,~*FacebookBot*" # taken from https://github.com/superseriousbusiness/gotosocial/blob/main/internal/web/robots.go
         client-body-buffer-size: 100M
         client-body-timeout: 120
         client-header-timeout: 120
+        custom-http-errors: >-
+          404,503
         enable-brotli: "true"
         enable-real-ip: "true"
         hsts-max-age: 31449600
@@ -84,4 +87,22 @@ spec:
         limits:
           memory: 500Mi
     defaultBackend:
-      enabled: false
+      enabled: true
+      name: default-backend
+      image:
+        repository: ghcr.io/tarampampam/error-pages
+        tag: 2.27.0
+      replicaCount: 1
+      extraEnvs:
+        - name: DISABLE_L10N
+          value: "true"
+        - name: SHOW_DETAILS
+          value: "false"
+        - name: TEMPLATE_NAME
+          value: l7-dark
+      resources:
+        requests:
+          cpu: 5m
+          memory: 10Mi
+        limits:
+          memory: 30Mi
