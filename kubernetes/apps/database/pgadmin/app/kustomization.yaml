@@ -8,7 +8,7 @@ resources:
 configMapGenerator:
   - name: servers-config
     files:
-      - config/servers.json
+      - servers.json=./config/servers.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
