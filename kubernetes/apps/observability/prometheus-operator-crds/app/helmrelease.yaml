@@ -3,11 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: prometheus-operator-crds
-  annotations:
-    meta.helm.sh/release-name: prometheus-operator-crds
-    meta.helm.sh/release-namespace: observability
-  labels:
-    app.kubernetes.io/managed-by: Helm
 spec:
   interval: 30m
   chart:
