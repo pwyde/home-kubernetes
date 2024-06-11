@@ -71,6 +71,6 @@ spec:
               - *host
     persistence:
       data:
-        existingClaim: portainer
+        existingClaim: portainer-pvc
         globalMounts:
           - path: /data
