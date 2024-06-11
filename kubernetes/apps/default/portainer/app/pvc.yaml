@@ -7,9 +7,9 @@ metadata:
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-iscsi"
 spec:
+  storageClassName: truenas-ssd-iscsi
   accessModes:
     - ReadWriteMany
-  storageClassName: truenas-ssd-iscsi
   resources:
     requests:
       storage: 1Gi
