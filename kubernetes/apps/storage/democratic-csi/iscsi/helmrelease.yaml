@@ -60,17 +60,17 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     # If your cluster supports snapshots you may enable below.
-    volumeSnapshotClasses:
-    - name: truenas-ssd-iscsi
-      driver: org.democratic-csi.iscsi-ssd
-      annotations:
-        snapshot.storage.kubernetes.io/is-default-class: "true"
-      deletionPolicy: Delete
-      parameters:
-      # If true, snapshots will be created with zfs send/receive.
-      detachedSnapshots: "true"
-      secrets:
-        snapshotter-secret:
+    # volumeSnapshotClasses:
+    # - name: truenas-ssd-iscsi
+    #   driver: org.democratic-csi.iscsi-ssd
+    #   annotations:
+    #     snapshot.storage.kubernetes.io/is-default-class: "true"
+    #   deletionPolicy: Delete
+    #   parameters:
+    #   # If true, snapshots will be created with zfs send/receive.
+    #   detachedSnapshots: "true"
+    #   secrets:
+    #     snapshotter-secret:
     driver:
       config:
         # Please see the most up-to-date example of the corresponding config here:
