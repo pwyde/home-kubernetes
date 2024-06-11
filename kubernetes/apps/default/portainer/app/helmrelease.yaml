@@ -47,13 +47,13 @@ spec:
                 memory: 256M
     service:
       app:
-        controller: portainer
+        controller: *app
         ports:
           http:
             port: 9000
     serviceAccount:
       create: true
-      name: portainer
+      name: *app
     ingress:
       app:
         annotations:
