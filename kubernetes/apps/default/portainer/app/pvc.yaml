@@ -9,8 +9,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: nfs-csi
-  volumeName: portainer-data
+  storageClassName: truenas-ssd-iscsi
   resources:
     requests:
       storage: 1Gi
