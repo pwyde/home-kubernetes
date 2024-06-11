@@ -5,4 +5,5 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
+  - ./gatus/ks.yaml
   - ./prometheus-operator-crds/ks.yaml
