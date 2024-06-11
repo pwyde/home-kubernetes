@@ -6,7 +6,7 @@ resources:
   - ./pgadmin-secret.sops.yaml
   - ./pvc.yaml
 configMapGenerator:
-  - name: servers-config
+  - name: pgadmin-config
     files:
       - servers.json=./config/servers.json
 generatorOptions:
