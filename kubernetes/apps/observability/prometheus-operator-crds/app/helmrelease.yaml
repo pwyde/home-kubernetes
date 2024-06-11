@@ -6,6 +6,8 @@ metadata:
   annotations:
     meta.helm.sh/release-name: prometheus-operator-crds
     meta.helm.sh/release-namespace: observability
+  labels:
+    app.kubernetes.io/managed-by: Helm
 spec:
   interval: 30m
   chart:
