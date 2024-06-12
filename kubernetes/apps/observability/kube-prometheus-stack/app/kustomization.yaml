@@ -6,17 +6,20 @@ resources:
   - ./helmrelease.yaml
   # - ./prometheusrules
   # - ./scrapeconfigs
-secretGenerator:
+# secretGenerator:
+#   - name: alertmanager-config
+#     files:
+#       - ./config/alertmanager-config.yaml
+configMapGenerator:
   - name: alertmanager-config
     files:
-      - ./config/alertmanager-config.yaml
-# configMapGenerator:
-#   - name: flux-kube-state-metrics-config
-#     files:
-#       - ./config/kube-state-metrics-config.yaml
-#     options:
-#       labels:
-#         app.kubernetes.io/part-of: flux
-#         app.kubernetes.io/component: observability
-# generatorOptions:
-#   disableNameSuffixHash: true
+      - alertmanager.yaml=./config/alertmanager-config.yaml
+  # - name: flux-kube-state-metrics-config
+  #   files:
+  #     - ./config/kube-state-metrics-config.yaml
+  #   options:
+  #     labels:
+  #       app.kubernetes.io/part-of: flux
+  #       app.kubernetes.io/component: observability
+generatorOptions:
+  disableNameSuffixHash: true
