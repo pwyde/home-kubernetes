@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./alertmanager-secret.sops.yaml
   - ./helmrelease.yaml
-  # - ./prometheusrules
+  - ./prometheusrules
   # - ./scrapeconfigs
 secretGenerator:
   - name: alertmanager-config
