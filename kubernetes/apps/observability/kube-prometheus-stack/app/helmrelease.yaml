@@ -34,7 +34,7 @@ spec:
   valuesFrom:
   - kind: ConfigMap
     name: alertmanager-config
-    valuesKey: alertmanager.yaml.yaml
+    valuesKey: alertmanager.yaml
   values:
     crds:
       enabled: false
