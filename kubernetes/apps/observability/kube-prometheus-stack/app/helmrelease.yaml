@@ -110,3 +110,10 @@ spec:
               resources:
                 requests:
                   storage: 20Gi
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+      sidecar:
+        dashboards:
+          annotations:
+            grafana_folder: Kubernetes
