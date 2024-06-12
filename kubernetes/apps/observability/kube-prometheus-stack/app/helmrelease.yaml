@@ -50,7 +50,7 @@ spec:
       alertmanagerSpec:
         replicas: 2
         # Alertmanager configuration is provided as a secret.
-        # useExistingSecret: true
+        useExistingSecret: true
         # Alertmanager configuration is provided as a secret.
         # The secret is mounted into /etc/alertmanager/config.
         configSecret: alertmanager-config
