@@ -80,10 +80,10 @@ spec:
               - *host
     persistence:
       data:
-        existingClaim: pgadmin-data
+        existingClaim: data-pgadmin
         globalMounts:
           - path: /var/lib/pgadmin
-      pgadmin-config:
+      config:
         type: configMap
         name: pgadmin-config
         globalMounts:

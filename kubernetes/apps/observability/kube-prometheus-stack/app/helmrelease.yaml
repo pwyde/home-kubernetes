@@ -51,7 +51,8 @@ spec:
         replicas: 2
         # Alertmanager configuration is provided as a secret.
         useExistingSecret: true
-        # The secret is mounted into /etc/alertmanager/config.
+        # The configuration secret is exported to /etc/alertmanager/config_out/alertmanager.env.yaml
+        # using Kustomize secretGenerator.
         configSecret: alertmanager-config
         # Mount secret into /etc/alertmanager/secrets/alertmanager-secret.
         secrets:
