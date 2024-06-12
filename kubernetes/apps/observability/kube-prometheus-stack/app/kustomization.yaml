@@ -9,7 +9,7 @@ resources:
 secretGenerator:
   - name: alertmanager-config
     files:
-      - alertmanager.yaml=./config/alertmanager-config.yaml
+      - ./config/alertmanager-config.yaml
 # configMapGenerator:
 #   - name: flux-kube-state-metrics-config
 #     files:
