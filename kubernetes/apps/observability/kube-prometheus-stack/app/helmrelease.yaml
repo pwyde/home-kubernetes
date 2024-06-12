@@ -31,10 +31,6 @@ spec:
       namespace: observability
     - name: democratic-csi-iscsi
       namespace: storage
-  valuesFrom:
-  - kind: ConfigMap
-    name: alertmanager-config
-    valuesKey: alertmanager.yaml
   values:
     crds:
       enabled: false
@@ -54,7 +50,10 @@ spec:
       alertmanagerSpec:
         replicas: 2
         useExistingSecret: true
-        configSecret: alertmanager-secret
+        secrets:
+          - alertmanager-secret
+        configMaps:
+          - alertmanager-config
         resources:
           requests:
             cpu: 50m
