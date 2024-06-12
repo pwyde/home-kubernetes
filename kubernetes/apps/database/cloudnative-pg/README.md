@@ -19,10 +19,11 @@
     }
     ```
 
-2. Create the cloudnative-pg user and password.
+2. Create the cloudnative-pg bucket user and password.
 
     ```sh
-    mc admin user add minio cloudnative-pg <super-secret-password>
+    export BUCKET_PASSWORD="$(openssl rand -hex 20)"
+    mc admin user add minio cloudnative-pg "${BUCKET_PASSWORD}"
     ```
 
 3. Create the CloudNativePG bucket.
