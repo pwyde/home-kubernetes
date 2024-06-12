@@ -87,8 +87,13 @@ spec:
               - *host
       prometheusSpec:
         replicas: 2
-        retention: 3d
-        retentionSize: 15GB
+        replicaExternalLabelName: __replica__
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart.
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
         enableFeatures:
@@ -96,6 +101,8 @@ spec:
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
           - auto-gomemlimit
+        retention: 3d
+        retentionSize: 15GB
         resources:
           requests:
             cpu: 100m
