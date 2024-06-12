@@ -55,8 +55,8 @@ spec:
         # The secret is mounted into /etc/alertmanager/config.
         configSecret: alertmanager-config
         # Mount secret into /etc/alertmanager/secrets/alertmanager-secret.
-        secrets:
-          - alertmanager-secret
+        # secrets:
+        #   - alertmanager-secret
         resources:
           requests:
             cpu: 50m
