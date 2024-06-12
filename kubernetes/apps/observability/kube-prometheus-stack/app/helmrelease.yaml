@@ -28,7 +28,7 @@ spec:
     keepHistory: false
   dependsOn:
     - name: prometheus-operator-crds
-      namespace: monitoring
+      namespace: observability
     - name: democratic-csi-iscsi
       namespace: storage
   # valuesFrom:
