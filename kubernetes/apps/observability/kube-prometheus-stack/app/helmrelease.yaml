@@ -51,12 +51,11 @@ spec:
         replicas: 2
         # Alertmanager configuration is provided as a secret.
         useExistingSecret: true
-        # Alertmanager configuration is provided as a secret.
         # The secret is mounted into /etc/alertmanager/config.
         configSecret: alertmanager-config
         # Mount secret into /etc/alertmanager/secrets/alertmanager-secret.
-        # secrets:
-        #   - alertmanager-secret
+        secrets:
+          - alertmanager-secret
         resources:
           requests:
             cpu: 50m
