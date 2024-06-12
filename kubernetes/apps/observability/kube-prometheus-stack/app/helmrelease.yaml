@@ -54,6 +54,7 @@ spec:
           - alertmanager-secret
         configMaps:
           - alertmanager-config
+        alertmanagerConfiguration: alertmanager-config
         resources:
           requests:
             cpu: 50m
