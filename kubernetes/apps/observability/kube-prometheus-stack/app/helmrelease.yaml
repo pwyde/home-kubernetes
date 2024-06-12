@@ -49,12 +49,11 @@ spec:
               - *host
       alertmanagerSpec:
         replicas: 2
+        # Alertmanager configuration is provided as a secret.
         useExistingSecret: true
+        # Mount secret into /etc/alertmanager/secrets/alertmanager-secret.
         secrets:
           - alertmanager-secret
-        configMaps:
-          - alertmanager-config
-        alertmanagerConfiguration: alertmanager-config
         resources:
           requests:
             cpu: 50m
