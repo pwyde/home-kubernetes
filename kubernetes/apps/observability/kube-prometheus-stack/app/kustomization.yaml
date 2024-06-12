@@ -16,7 +16,7 @@ configMapGenerator:
       - alertmanager.yaml=./config/alertmanager-config.yaml
   # - name: flux-kube-state-metrics-config
   #   files:
-  #     - ./config/kube-state-metrics-config.yaml
+  #     - kube-state-metrics.yaml=./config/kube-state-metrics-config.yaml
   #   options:
   #     labels:
   #       app.kubernetes.io/part-of: flux
