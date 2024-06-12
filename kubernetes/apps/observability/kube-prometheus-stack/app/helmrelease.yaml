@@ -1,0 +1,112 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+spec:
+  interval: 30h
+  timeout: 15m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 60.0.2
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    crds: Skip
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: Skip
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: prometheus-operator-crds
+      namespace: monitoring
+    - name: democratic-csi-iscsi
+      namespace: storage
+  # valuesFrom:
+  # - kind: ConfigMap
+  #   name: flux-kube-state-metrics-config
+  #   valuesKey: kube-state-metrics-config.yaml
+  values:
+    crds:
+      enabled: false
+    cleanPrometheusOperatorObjectNames: true
+    alertmanager:
+      ingress:
+        enabled: true
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host alertmanager.${SECRET_DOMAIN}
+        ingressClassName: internal
+        pathType: Prefix
+        hosts:
+          - *host
+        tls:
+          - hosts:
+              - *host
+      alertmanagerSpec:
+        replicas: 2
+        useExistingSecret: true
+        configSecret: alertmanager-secret
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 60m
+            memory: 64Mi
+        storage:
+          volumeClaimTemplate:
+            metadata:
+              name: data
+            spec:
+              storageClassName: truenas-ssd-iscsi
+              resources:
+                requests:
+                  storage: 1Gi
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host prometheus.${SECRET_DOMAIN}
+        ingressClassName: internal
+        pathType: Prefix
+        hosts:
+          - *host
+        tls:
+          - hosts:
+              - *host
+      prometheusSpec:
+        replicas: 2
+        retention: 3d
+        retentionSize: 15GB
+        enableAdminAPI: true
+        walCompression: true
+        enableFeatures:
+          # https://prometheus.io/docs/prometheus/latest/feature_flags/
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
+          - auto-gomemlimit
+        resources:
+          requests:
+            cpu: 100m
+            memory: 1500Mi
+          limits:
+            cpu: 300m
+            memory: 1500Mi
+        storageSpec:
+          volumeClaimTemplate:
+            metadata:
+              name: data
+            spec:
+              storageClassName: truenas-ssd-iscsi
+              resources:
+                requests:
+                  storage: 20Gi
