@@ -136,11 +136,17 @@ spec:
             type: prometheus
             uid: prometheus
             access: proxy
-            url: http://thanos-query-frontend.observability.svc.cluster.local:10902
-            jsonData:
-              prometheusType: Thanos
-              timeInterval: 1m
+            url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090/
             isDefault: true
+          # - name: Prometheus
+          #   type: prometheus
+          #   uid: prometheus
+          #   access: proxy
+          #   url: http://thanos-query-frontend.observability.svc.cluster.local:10902
+          #   jsonData:
+          #     prometheusType: Thanos
+          #     timeInterval: 1m
+          #   isDefault: true
           # - name: Loki
           #   type: loki
           #   uid: loki
