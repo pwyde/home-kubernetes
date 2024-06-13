@@ -26,7 +26,6 @@ spec:
     keepHistory: false
   values:
     config:
-      lokiAddress: http://loki.observability.svc.cluster.local:3100/api/v1/push
       snippets:
         extraScrapeConfigs: |
           - job_name: journal
