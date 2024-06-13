@@ -39,8 +39,8 @@ spec:
                 target_label: 'unit'
               - source_labels: ['__journal__hostname']
                 target_label: 'hostname'
-    serviceMonitor:
-      enabled: true
+    # serviceMonitor:
+    #   enabled: true
     extraVolumes:
       - name: var-journal
         hostPath:
