@@ -38,7 +38,7 @@ spec:
             fsGroup: *gid
             fsGroupChangePolicy: "OnRootMismatch"
         containers:
-          app:
+          it-tools:
             image:
               repository: ghcr.io/corentinth/it-tools
               tag: 2023.12.21-5ed3693

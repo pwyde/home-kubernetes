@@ -33,7 +33,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          app:
+          portainer:
             image:
               repository: docker.io/portainer/portainer-ce
               tag: 2.20.3-alpine

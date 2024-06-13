@@ -41,7 +41,7 @@ spec:
             fsGroup: 5050 # ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
-          app:
+          pgadmin:
             image:
               repository: docker.io/dpage/pgadmin4
               tag: 8.8
