@@ -25,6 +25,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    env:
+      TZ: ${TIMEZONE}
     resources:
       requests:
         cpu: 50m
