@@ -28,7 +28,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          app:
+          cloudflared:
             image:
               repository: docker.io/cloudflare/cloudflared
               tag: 2024.5.0
