@@ -25,6 +25,15 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    resources:
+      limits:
+        cpu: 200m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    serviceMonitor:
+      enabled: true
     config:
       snippets:
         extraScrapeConfigs: |
@@ -39,8 +48,6 @@ spec:
                 target_label: 'unit'
               - source_labels: ['__journal__hostname']
                 target_label: 'hostname'
-    # serviceMonitor:
-    #   enabled: true
     extraVolumes:
       - name: var-journal
         hostPath:
