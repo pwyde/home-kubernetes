@@ -28,7 +28,7 @@ connectivity:
     interval: 1m
 endpoints:
   - name: status
-    group: monitoring
+    group: observability
     url: https://status.${SECRET_DOMAIN}
     interval: 1m
     client:

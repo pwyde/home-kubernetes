@@ -1,4 +1,4 @@
-# CloudNativePG
+# Thanos
 
 ## S3 Configuration
 
@@ -19,20 +19,20 @@
     }
     ```
 
-2. Create the cloudnative-pg bucket user and password.
+2. Create the thanos user and password.
 
     ```sh
     export BUCKET_PASSWORD="$(openssl rand -hex 20)"
-    mcli admin user add minio cloudnative-pg "${BUCKET_PASSWORD}"
+    mcli admin user add minio thanos "${BUCKET_PASSWORD}"
     ```
 
-3. Create the CloudNativePG bucket.
+3. Create the Thanos bucket.
 
     ```sh
-    mcli mb minio/cloudnative-pg
+    mcli mb minio/thanos
     ```
 
-4. Create `~/.mcli/cloudnative-pg-user-policy.json`
+4. Create `~/.mcli/thanos-user-policy.json`
 
     ```json
     {
@@ -46,7 +46,7 @@
                     "s3:DeleteObject"
                 ],
                 "Effect": "Allow",
-                "Resource": ["arn:aws:s3:::cloudnative-pg/*", "arn:aws:s3:::cloudnative-pg"],
+                "Resource": ["arn:aws:s3:::thanos/*", "arn:aws:s3:::thanos"],
                 "Sid": ""
             }
         ]
@@ -56,11 +56,11 @@
 5. Apply the bucket policies.
 
     ```sh
-    mcli admin policy create minio cloudnative-pg-private ~/.mcli/cloudnative-pg-user-policy.json
+    mcli admin policy create minio thanos-private ~/.mcli/thanos-user-policy.json
     ```
 
 6. Associate private policy with the user.
 
     ```sh
-    mcli admin policy attach minio cloudnative-pg-private --user cloudnative-pg
+    mcli admin policy attach minio thanos-private --user thanos
     ```

@@ -31,6 +31,8 @@ spec:
       namespace: observability
     - name: democratic-csi-iscsi
       namespace: storage
+    - name: thanos
+      namespace: observability
   values:
     crds:
       enabled: false
@@ -179,7 +181,14 @@ spec:
         tls:
           - hosts:
               - *host
+      thanosService:
+        enabled: true
+      thanosServiceMonitor:
+        enabled: true
       prometheusSpec:
+        podMetadata:
+          annotations:
+            secret.reloader.stakater.com/reload: &secret thanos-objstore-config
         replicas: 2
         replicaExternalLabelName: __replica__
         scrapeInterval: 1m # Must match interval in Grafana Helm chart.
@@ -195,6 +204,13 @@ spec:
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
           - auto-gomemlimit
+        thanos:
+          image: quay.io/thanos/thanos:${THANOS_VERSION}
+          version: "${THANOS_VERSION#v}"
+          objectStorageConfig:
+            existingSecret:
+              name: *secret
+              key: config
         retention: 3d
         retentionSize: 15GB
         resources:

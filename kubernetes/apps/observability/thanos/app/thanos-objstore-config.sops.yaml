@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: thanos-objstore-config
+    namespace: observability
+    labels:
+        app.kubernetes.io/managed-by: Helm
+    annotations:
+        meta.helm.sh/release-name: thanos
+        meta.helm.sh/release-namespace: observability
+stringData:
+    config: ENC[AES256_GCM,data:T96gnUNNHgb9eDg9ltkyD1JsNhnN39JovfW+3jZm8qONP63ks5vlYsUFkpcATYIe4rmZj6FXQdwa+5zCYy9Th8WWEag0n+oK8yLtAPkfwzlAnhWxzgKlecJgG8cnZT/gushwWEO+UBNljHmt5r63/BmILd/6L2e/YpSi382fWmKnIaEHCze0dzjC5dwk5R1Y0RVwWUG1zu9M9H9eGdlxVdF1JJQXls6t/AoCnyptbM27iTTF5JDvfgiZxWwUthnQ8EZdNKeuS/7wD6ue1Dcx0SgAh3ZxhLjl5p12NVCAFPp3Cg==,iv:7SkGu7cW2mwHjNxBAlldR+EvzhuVm8A1Iw8NPQEcRVU=,tag:HnOf6l01CyJf1wxAWGA/Pg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1lwq7plulkvt5qek49zd4dukffcjlmh9kk3t9duhyaayvauluspcqucrln6
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpUWlOcGE1d3BvdFgvcXJU
+            NzMwQkIydzJ5WU12QmFGdWdtUUZlSFdIMFg4ClFLRXh2dVJqV1JHVFJncjlmRXQx
+            YksrQ0lKeWw5aEl2ckFTKzVhOEtCbmcKLS0tIHVTdXIrTjlNdjl5Nmh2VmVjcTQ2
+            VkdmZVM1cHd0UndFZ0x1WVV5RmFXRjQKiz+b3S2YGpTSVWyaZawcw+l+khkvJzqb
+            BqJev7ra2Tq2vBugLP8VvFgnZlN6zSyZgV2Iex0oR31iGvCliMM1mQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-06-13T10:13:52Z"
+    mac: ENC[AES256_GCM,data:0bE3KLYUp7oEjy8A2DfJpkMWWKJlBdWOv0P9r2XpS2YYlxT7+u2eRwjldSSvEDc2QPt4LRWQriDd2NaOkAgEiHHCv08m+dzmUihEYJiQw+5ps/2MMkHTh5+nvMDIMACdz+k7ooO6jSfDk4i4bpBRgF8ND+qGEovOx192+rXX9gw=,iv:K0UZ+aIfIH1sdIZcArR/AdNPLwTHapf45Mhbn+avJ30=,tag:3IC4+wAquRRelohezFY/UA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1

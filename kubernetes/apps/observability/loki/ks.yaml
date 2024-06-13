@@ -2,14 +2,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app kube-prometheus-stack
+  name: &app loki
   namespace: flux-system
 spec:
   targetNamespace: observability
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/observability/kube-prometheus-stack/app
+  path: ./kubernetes/apps/observability/loki/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -18,7 +18,3 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 15m
-  postBuild:
-    substitute:
-      # renovate: datasource=docker depName=quay.io/thanos/thanos
-      THANOS_VERSION: v0.35.1
