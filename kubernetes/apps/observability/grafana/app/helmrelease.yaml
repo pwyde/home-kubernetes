@@ -192,10 +192,10 @@ spec:
           datasource:
             - { name: DS_PROMETHEUS, value: Prometheus }
         # Legends are broken, see https://github.com/monitoring-mixins/website/issues/37
-        # cert-manager:
-        #   url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
-        #   datasource: Prometheus
         cert-manager:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
+          datasource: Prometheus
+        cert-manager-2:
           gnetId: 20842
           revision: 2
           datasource:
