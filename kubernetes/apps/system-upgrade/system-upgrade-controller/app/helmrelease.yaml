@@ -25,7 +25,7 @@ spec:
       system-upgrade-controller:
         strategy: RollingUpdate
         containers:
-          app:
+          system-upgrade-controller:
             image:
               repository: docker.io/rancher/system-upgrade-controller
               tag: v0.13.4
