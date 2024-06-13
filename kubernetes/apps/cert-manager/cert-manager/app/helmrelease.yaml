@@ -33,4 +33,4 @@ spec:
       enabled: true
       servicemonitor:
         enabled: true
-        prometheusInstance: kube-prometheus-stack
+        # prometheusInstance: kube-prometheus-stack
