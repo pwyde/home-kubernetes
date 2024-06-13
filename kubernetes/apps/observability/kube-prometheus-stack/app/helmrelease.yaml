@@ -219,10 +219,10 @@ spec:
         retentionSize: 15GB
         resources:
           requests:
-            cpu: 250m
+            cpu: 300m
             memory: 1500Mi
           limits:
-            cpu: 300m
+            cpu: 350m
             memory: 1500Mi
         storageSpec:
           volumeClaimTemplate:
