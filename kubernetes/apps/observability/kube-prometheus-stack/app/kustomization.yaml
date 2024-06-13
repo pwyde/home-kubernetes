@@ -10,13 +10,13 @@ secretGenerator:
   - name: alertmanager-config
     files:
       - alertmanager.yaml=./config/alertmanager-config.yaml
-# configMapGenerator:
-#   - name: flux-kube-state-metrics-config
-#     files:
-#       - kube-state-metrics.yaml=./config/kube-state-metrics-config.yaml
-#     options:
-#       labels:
-#         app.kubernetes.io/part-of: flux
-#         app.kubernetes.io/component: observability
+configMapGenerator:
+  - name: flux-kube-state-metrics-config
+    files:
+      - kube-state-metrics.yaml=./config/kube-state-metrics-config.yaml
+    options:
+      labels:
+        app.kubernetes.io/part-of: flux
+        app.kubernetes.io/component: observability
 generatorOptions:
   disableNameSuffixHash: true

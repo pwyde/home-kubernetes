@@ -33,6 +33,10 @@ spec:
       namespace: storage
     - name: thanos
       namespace: observability
+  valuesFrom:
+  - kind: ConfigMap
+    name: flux-kube-state-metrics-config
+    valuesKey: kube-state-metrics-config.yaml
   values:
     crds:
       enabled: false
@@ -75,7 +79,6 @@ spec:
               resources:
                 requests:
                   storage: 1Gi
-
     # Adapted from https://github.com/onedr0p/home-ops/blob/main/kubernetes/main/apps/observability/kube-prometheus-stack/app/helmrelease.yaml
     # See https://github.com/k3s-io/k3s/issues/425 for issue revolving inproper monitoring for K3s and workaround.
     # See also https://picluster.ricsanfre.com/docs/prometheus/#k3s-components-monitoring for duplicate metrics issue.
