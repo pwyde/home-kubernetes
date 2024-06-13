@@ -32,7 +32,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          app:
+          minio:
             image:
               repository: quay.io/minio/minio
               tag: RELEASE.2024-05-28T17-19-04Z
