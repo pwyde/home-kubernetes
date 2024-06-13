@@ -1,0 +1,64 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app promtail
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: promtail
+      version: 6.16.0
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    config:
+      lokiAddress: http://loki.observability.svc.cluster.local:3100/api/v1/push
+      snippets:
+        extraScrapeConfigs: |
+          - job_name: journal
+            journal:
+              path: /var/log/journal
+              max_age: 12h
+              labels:
+                job: systemd-journal
+            relabel_configs:
+              - source_labels: ['__journal__systemd_unit']
+                target_label: 'unit'
+              - source_labels: ['__journal__hostname']
+                target_label: 'hostname'
+    serviceMonitor:
+      enabled: true
+    extraVolumes:
+      - name: var-journal
+        hostPath:
+          path: /var/log/journal
+      - name: run-journal
+        hostPath:
+          path: /run/log/journal
+      - name: machine-id
+        hostPath:
+          path: /etc/machine-id
+    extraVolumeMounts:
+      - name: var-journal
+        mountPath: /var/log/journal
+        readOnly: true
+      - name: run-journal
+        mountPath: /run/log/journal
+        readOnly: true
+      - name: machine-id
+        mountPath: /etc/machine-id
+        readOnly: true
