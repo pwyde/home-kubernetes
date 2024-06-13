@@ -86,6 +86,7 @@ spec:
       enabled: true
       serviceMonitor:
         metricRelabelings:
+          # Note: Relabeling below is disabled because this removed a lot of useful metrics in Grafana dashboards for Kubernetes.
           # Remove duplicate labels provided by K3s.
           # - action: keep
           #   sourceLabels: [ "__name__" ]

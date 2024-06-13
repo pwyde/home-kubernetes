@@ -66,6 +66,10 @@ spec:
         ssl-protocols: TLSv1.3 TLSv1.2
       metrics:
         enabled: true
+        # https://kubernetes.github.io/ingress-nginx/user-guide/monitoring/
+        podAnnotations:
+          prometheus.io/port: "10254"
+          prometheus.io/scrape: "true"
         serviceMonitor:
           enabled: true
           namespaceSelector:
