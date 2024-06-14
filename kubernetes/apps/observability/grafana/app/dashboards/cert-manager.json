@@ -46,10 +46,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": {
-          "type": "datasource",
-          "uid": "grafana"
-        },
+        "datasource": "-- Grafana --",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -66,10 +63,7 @@
   "links": [],
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "The number of certificates in the ready state.",
       "fieldConfig": {
         "defaults": {
@@ -138,10 +132,7 @@
       "pluginVersion": "11.0.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "sum by (condition) (certmanager_certificate_ready_status{ })",
           "interval": "",
@@ -154,10 +145,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
@@ -210,10 +198,7 @@
       "pluginVersion": "11.0.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "expr": "min(certmanager_certificate_expiration_timestamp_seconds{ } > 0) - time()",
           "hide": false,
           "instant": true,
@@ -222,10 +207,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "expr": "vector(1250000)",
           "hide": true,
           "instant": true,
@@ -238,10 +220,7 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "Status of the certificates. Values are True, False or Unknown.",
       "fieldConfig": {
         "defaults": {
@@ -345,10 +324,7 @@
       "pluginVersion": "11.0.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "expr": "label_join(avg by (name, namespace, condition, exported_namespace) (certmanager_certificate_ready_status{ } == 1), \"namespaced_name\", \"-\", \"namespace\", \"exported_namespace\", \"name\")",
           "format": "table",
           "instant": true,
@@ -357,10 +333,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "expr": "label_join(avg by (name, namespace, exported_namespace) (certmanager_certificate_expiration_timestamp_seconds{ }) * 1000, \"namespaced_name\", \"-\", \"namespace\", \"exported_namespace\", \"name\")",
           "format": "table",
           "instant": true,
@@ -429,10 +402,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "The rate of controller sync requests.",
       "fieldConfig": {
         "defaults": {
@@ -478,10 +448,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "sum by (controller) (\n  rate(certmanager_controller_sync_call_count{ }[$__rate_interval ])\n)",
           "interval": "",
@@ -526,10 +493,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "Rate of requests to ACME provider.",
       "fieldConfig": {
         "defaults": {
@@ -577,10 +541,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "sum by (method, path, status) (\n  rate(certmanager_http_acme_client_request_count{ }[$__rate_interval ])\n)",
           "interval": "",
@@ -625,10 +586,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "Average duration of requests to ACME provider. ",
       "fieldConfig": {
         "defaults": {
@@ -676,10 +634,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "sum by (method, path, status) (rate(certmanager_http_acme_client_request_duration_seconds_sum{ }[$__rate_interval ]))\n/\nsum by (method, path, status) (rate(certmanager_http_acme_client_request_duration_seconds_count{ }[$__rate_interval ]))",
           "interval": "",
@@ -726,10 +681,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "CPU Usage and limits, as percent of a vCPU core. ",
       "fieldConfig": {
         "defaults": {
@@ -791,10 +743,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "avg by (pod) (rate(container_cpu_usage_seconds_total{container=\"cert-manager-cainjector\" }[$__rate_interval ]))",
           "format": "time_series",
@@ -806,10 +755,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "avg by (pod) (kube_pod_container_resource_limits_cpu_cores{container=\"cert-manager-controller\" })",
           "format": "time_series",
@@ -821,10 +767,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "avg by (pod) (kube_pod_container_resource_requests_cpu_cores{container=\"cert-manager-webhook\" })",
           "format": "time_series",
@@ -874,10 +817,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "Percent of the time that the CPU is being throttled. Higher is badderer. ",
       "fieldConfig": {
         "defaults": {
@@ -929,10 +869,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "avg by (pod) (\n  rate(container_cpu_cfs_throttled_periods_total{container=\"cert-manager\" }[$__rate_interval ])\n  /\n  rate(container_cpu_cfs_periods_total{container=\"cert-manager\" }[$__rate_interval ])\n)",
           "format": "time_series",
@@ -982,10 +919,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "Memory utilisation and limits.",
       "fieldConfig": {
         "defaults": {
@@ -1047,10 +981,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "avg by (pod) (container_memory_usage_bytes{container=\"cert-manager-cainjector\" })",
           "format": "time_series",
@@ -1062,10 +993,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "avg by (pod) (kube_pod_container_resource_limits_memory_bytes{container=\"cert-manager-controller\" })",
           "format": "time_series",
@@ -1076,10 +1004,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "editorMode": "code",
           "expr": "avg by (pod) (kube_pod_container_resource_requests_memory_bytes{container=\"cert-manager-webhook\" })",
           "format": "time_series",
@@ -1128,10 +1053,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
-      },
+      "datasource": "$datasource",
       "description": "Network ingress/egress.",
       "fieldConfig": {
         "defaults": {
@@ -1181,10 +1103,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "expr": "avg(\n  sum without (interface) (\n    rate(container_network_receive_bytes_total{namespace=\"cert-manager\" }[$__rate_interval ])\n  )\n)",
           "format": "time_series",
           "hide": false,
@@ -1194,10 +1113,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
+          "datasource": "$datasource",
           "expr": "avg(\n  sum without (interface) (\n    rate(container_network_transmit_bytes_total{namespace=\"cert-manager\" }[$__rate_interval ])\n  )\n)",
           "format": "time_series",
           "hide": false,
@@ -1267,10 +1183,7 @@
       },
       {
         "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "$datasource"
-        },
+        "datasource": "$datasource",
         "definition": "",
         "hide": 2,
         "includeAll": false,
