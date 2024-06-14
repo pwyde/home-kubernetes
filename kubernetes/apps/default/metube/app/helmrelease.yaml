@@ -36,7 +36,7 @@ spec:
           metube:
             image:
               repository: ghcr.io/alexta69/metube
-              tag: "2024-06-07"
+              tag: "2024-06-07@sha256:fbd4a47410aac4ce322eb655404c112cadb919418e0952a1a2836eb9c366ccea"
             env:
               TZ: ${TIMEZONE}
               DARK_MODE: true
