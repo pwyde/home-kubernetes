@@ -192,14 +192,14 @@ spec:
           datasource:
             - { name: DS_PROMETHEUS, value: Prometheus }
         # Missing data legends, see https://github.com/monitoring-mixins/website/issues/37
-        # cert-manager:
-        #   url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
-        #   datasource: Prometheus
         cert-manager:
-          gnetId: 11001
-          revision: 1
-          datasource:
-            - { name: DS_PROMETHEUS, value: Prometheus }
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
+          datasource: Prometheus
+        # cert-manager:
+        #   gnetId: 20842
+        #   revision: 2
+        #   datasource:
+        #     - { name: DS_PROMETHEUS, value: Prometheus }
         dragonfly:
           url: https://raw.githubusercontent.com/dragonflydb/dragonfly/main/tools/local/monitoring/grafana/provisioning/dashboards/dashboard.json
           datasource: Prometheus
