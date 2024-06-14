@@ -1,5 +1,6 @@
 ---
-# Note: Authelia vars should be escaped with $${VAR_NAME} to avoid interpolation by Flux.
+# Note: Authelia variables passed through a secret must be escaped with $${VAR_NAME}
+# to avoid interpolation by Flux.
 log:
   level: debug
 
