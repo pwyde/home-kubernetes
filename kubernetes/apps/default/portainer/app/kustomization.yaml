@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./namespace.yaml
+  - ./portainer-secret.sops.yaml
   - ./pvc.yaml
   - ./rbac.yaml
