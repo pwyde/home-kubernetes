@@ -29,9 +29,9 @@ session:
   remember_me: 1M
   cookies:
     - name: wyde_session
-      domain: ${SECRET_DOMAIN}
-      authelia_url: https://auth.${SECRET_DOMAIN}
-      default_redirection_url: https://${SECRET_DOMAIN}
+      domain: "${SECRET_DOMAIN}"
+      authelia_url: "https://auth.${SECRET_DOMAIN}"
+      default_redirection_url: "https://${SECRET_DOMAIN}"
   redis:
     database_index: 2
     host: dragonfly.database.svc.cluster.local
@@ -39,10 +39,10 @@ session:
 notifier:
   disable_startup_check: true
   smtp:
-    username: ${SMTP_USERNAME}
-    password: ${SMPT_PASSWORD}
-    address: smtp.eu.mailgun.org:587
-    sender: Authelia <authelia@${SECRET_DOMAIN}>
+    username: "${SMTP_USERNAME}"
+    password: "${SMPT_PASSWORD}"
+    address: "smtp.eu.mailgun.org:587"
+    sender: "Authelia <authelia@${SECRET_DOMAIN}>"
 
 totp:
   disable: false
