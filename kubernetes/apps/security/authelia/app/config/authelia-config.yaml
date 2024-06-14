@@ -41,7 +41,7 @@ notifier:
   smtp:
     username: ${SMTP_USERNAME}
     password: ${SMPT_PASSWORD}
-    address: smtp.eu.mailgun.org:587
+    address: ${SMTP_ADDRESS}
     sender: Authelia <authelia@${SECRET_DOMAIN}>
 
 totp:
