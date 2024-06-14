@@ -46,5 +46,6 @@ spec:
       enabled: true
     podAnnotations:
       secret.reloader.stakater.com/reload: external-dns-secret
+      # Enable metrics. See https://github.com/kubernetes-sigs/external-dns/issues/2431
       prometheus.io/scrape: "true"
       prometheus.io/port: "7979"
