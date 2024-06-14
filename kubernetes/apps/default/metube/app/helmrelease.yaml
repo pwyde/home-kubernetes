@@ -47,10 +47,6 @@ spec:
               # Path where intermediary download files will be saved. Set this to an SSD or RAM file-
               # system (i.e. tmpfs) for better performance.
               TEMP_DIR: /tmp
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: false
-              capabilities: { drop: ["ALL"] }
             resources:
               requests:
                 cpu: 10m
