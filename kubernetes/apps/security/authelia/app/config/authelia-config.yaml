@@ -45,11 +45,11 @@ notifier:
     sender: Authelia <authelia@${SECRET_DOMAIN}>
 
 totp:
-  disable: false
+  disable: true
   issuer: authelia.com
 
 webauthn:
-  disable: true
+  disable: false
 
 duo_api:
   disable: true
