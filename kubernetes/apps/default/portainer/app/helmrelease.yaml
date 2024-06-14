@@ -37,8 +37,15 @@ spec:
             image:
               repository: docker.io/portainer/portainer-ce
               tag: 2.20.3-alpine
+            args:
+              - --admin-password-file
+              - /tmp/admin
             env:
               TZ: ${TIMEZONE}
+              ANONYMOUS_USAGE: 0
+            envFrom:
+              - secretRef:
+                  name: portainer-secret
             resources:
               requests:
                 cpu: 10m
@@ -74,3 +81,11 @@ spec:
         existingClaim: data-portainer
         globalMounts:
           - path: /data
+      admin:
+        enabled: true
+        type: secret
+        name: portainer-secret
+        globalMounts:
+          - path: /tmp/admin
+            subPath: ADMIN_PASSWORD
+            readOnly: true
