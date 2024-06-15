@@ -41,12 +41,21 @@ spec:
               TZ: ${TIMEZONE}
               DARK_MODE: true
               DOWNLOAD_DIRS_INDEXABLE: true
-              DOWNLOAD_DIR: /mnt/media
+              DOWNLOAD_DIR: /media//Downloads/YouTube/
               # Path to where the queue persistence files will be saved.
               STATE_DIR: /data
               # Path where intermediary download files will be saved. Set this to an SSD or RAM file-
               # system (i.e. tmpfs) for better performance.
               TEMP_DIR: /tmp
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             resources:
               requests:
                 cpu: 10m
@@ -55,9 +64,9 @@ spec:
     # defaultPodOptions:
     #   securityContext:
     #     runAsNonRoot: true
-    #     runAsUser: 568
-    #     runAsGroup: 568
-    #     fsGroup: 568
+    #     runAsUser: 5000
+    #     runAsGroup: 4000
+    #     fsGroup: 4000
     #     fsGroupChangePolicy: OnRootMismatch
     #     supplementalGroups: [10000]
     #     seccompProfile: { type: RuntimeDefault }
@@ -88,7 +97,7 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
         globalMounts:
-        - path: /mnt/media
+          - path: /media
       data:
         existingClaim: data-metube
         globalMounts:
