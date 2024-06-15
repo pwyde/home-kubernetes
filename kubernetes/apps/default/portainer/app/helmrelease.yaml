@@ -46,6 +46,15 @@ spec:
             envFrom:
               - secretRef:
                   name: portainer-secret
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             resources:
               requests:
                 cpu: 10m
@@ -60,7 +69,7 @@ spec:
             port: *port
     serviceAccount:
       create: true
-      name: *app
+      name: 9000
     ingress:
       app:
         annotations:
