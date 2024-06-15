@@ -36,8 +36,9 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            runAsUser: &uid 5000
-            runAsGroup: &gid 5000
+            # https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html#mapped-files-and-directories
+            runAsUser: &uid 5050
+            runAsGroup: &gid 5050
             fsGroup: *gid
             fsGroupChangePolicy: OnRootMismatch
         containers:
