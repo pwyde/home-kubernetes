@@ -89,7 +89,6 @@ spec:
         path: ${NFS_PATH_MEDIA}
         globalMounts:
         - path: /mnt/media
-          subPath: Downloads/YouTube
       data:
         existingClaim: data-metube
         globalMounts:
