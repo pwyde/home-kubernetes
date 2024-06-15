@@ -56,7 +56,7 @@ spec:
                 spec:
                   httpGet:
                     path: /ping
-                    port: *port
+                    port: &port 4533
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -73,7 +73,7 @@ spec:
         controller: *app
         ports:
           http:
-            port: &port 4533
+            port: *port
     ingress:
       app:
         annotations:
