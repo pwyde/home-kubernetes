@@ -36,21 +36,34 @@ spec:
           reloader.stakater.com/auto: "true"
         pod:
           securityContext:
-            runAsUser: 5050 # ${APP_UID}
-            runAsGroup: 5050 # ${APP_GID}
-            fsGroup: 5050 # ${APP_GID}
+            runAsUser: &uid 5000
+            runAsGroup: &gid 5000
+            fsGroup: *gid
             fsGroupChangePolicy: OnRootMismatch
         containers:
           pgadmin:
             image:
               repository: docker.io/dpage/pgadmin4
-              tag: 8.8
+              tag: 8.8@sha256:6571236d0fe4a2e8945492134e04113bbdf877b4c6e227da9d858142c330c0d8
             env:
               TZ: ${TIMEZONE}
               PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "False"
             envFrom:
               - secretRef:
                   name: pgadmin-secret
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 50m

@@ -36,7 +36,7 @@ spec:
           portainer:
             image:
               repository: docker.io/portainer/portainer-ce
-              tag: 2.20.3-alpine
+              tag: 2.20.3-alpine@sha256:4f6f585b813dc72e84f0780b2fca6531bdb1d12f3c67e95056e2e159fb0d384a
             args:
               - --admin-password-file
               - /tmp/admin
@@ -46,6 +46,19 @@ spec:
             envFrom:
               - secretRef:
                   name: portainer-secret
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 10m

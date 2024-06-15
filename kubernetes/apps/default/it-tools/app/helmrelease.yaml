@@ -33,7 +33,7 @@ spec:
         replicas: 1
         pod:
           securityContext:
-            runAsUser: &uid 1000
+            runAsUser: &uid 5000
             runAsGroup: &gid 5000
             fsGroup: *gid
             fsGroupChangePolicy: "OnRootMismatch"
@@ -41,9 +41,22 @@ spec:
           it-tools:
             image:
               repository: ghcr.io/corentinth/it-tools
-              tag: 2023.12.21-5ed3693
+              tag: 2024.5.13-a0bc346@sha256:1816d2b48db74c54ed77ec60f224cc3df22679f2aa7acc051278691687e8cc3b
             env:
               TZ: ${TIMEZONE}
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             securityContext:
               readOnlyRootFilesystem: true
               allowPrivilegeEscalation: false
