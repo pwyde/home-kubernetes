@@ -48,7 +48,6 @@ spec:
               ND_CACHEFOLDER: /data/cache
               ND_MUSICFOLDER: /music/Library/Music
               ND_LOGLEVEL: info
-              ND_PORT: &port 80
               ND_SCANSCHEDULE: "@every 1h"
             probes:
               liveness: &probes
@@ -74,7 +73,7 @@ spec:
         controller: *app
         ports:
           http:
-            port: *port
+            port: &port 4533
     ingress:
       app:
         annotations:

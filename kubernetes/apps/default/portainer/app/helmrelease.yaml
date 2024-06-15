@@ -70,7 +70,7 @@ spec:
         controller: *app
         ports:
           http:
-            port: 9000
+            port: &port 9000
     serviceAccount:
       create: true
       name: *app
