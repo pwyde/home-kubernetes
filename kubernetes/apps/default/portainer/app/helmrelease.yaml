@@ -66,10 +66,10 @@ spec:
         controller: *app
         ports:
           http:
-            port: *port
+            port: 9000
     serviceAccount:
       create: true
-      name: 9000
+      name: *app
     ingress:
       app:
         annotations:
