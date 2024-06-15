@@ -1,0 +1,92 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app navidrome
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      navidrome:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        replicas: 1
+        pod:
+          securityContext:
+            runAsUser: &uid 1000
+            runAsGroup: &gid 4000
+            fsGroup: *gid
+            fsGroupChangePolicy: "OnRootMismatch"
+        containers:
+          it-tools:
+            image:
+              repository: ghcr.io/navidrome/navidrome
+              tag: 0.52.5@sha256:4d42b180d99bfe95e1c058413e504b287559afac7b496606d27e4a89c187c339
+            env:
+              TZ: ${TIMEZONE}
+              ND_DATAFOLDER: /data
+              ND_CACHEFOLDER: /data/cache
+              ND_MUSICFOLDER: /music
+              ND_LOGLEVEL: info
+              ND_PORT: &port 80
+              ND_SCANSCHEDULE: "@every 1h"
+            resources:
+              requests:
+                cpu: 10m
+                memory: 250M
+              limits:
+                memory: 500M
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *port
+    ingress:
+      app:
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host navidrome.${SECRET_DOMAIN}
+          className: internal
+        hosts:
+          - host: *host
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    persistence:
+      data:
+        existingClaim: data-navidrome
+        globalMounts:
+          - path: /data
+      music:
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_PATH_MEDIA}
+        globalMounts:
+          - path: /music
+            readOnly: true
+
