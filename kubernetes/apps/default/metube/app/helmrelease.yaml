@@ -41,7 +41,7 @@ spec:
               TZ: ${TIMEZONE}
               DARK_MODE: true
               DOWNLOAD_DIRS_INDEXABLE: true
-              DOWNLOAD_DIR: /media
+              DOWNLOAD_DIR: /mnt/media
               # Path to where the queue persistence files will be saved.
               STATE_DIR: /data
               # Path where intermediary download files will be saved. Set this to an SSD or RAM file-
@@ -88,7 +88,7 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
         globalMounts:
-        - path: /media
+        - path: /mnt/media
           subPath: Downloads/YouTube
       data:
         existingClaim: data-metube
