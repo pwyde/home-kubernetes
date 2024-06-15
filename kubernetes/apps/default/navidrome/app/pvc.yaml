@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: data-navidrome
-  namespace: navidrome
+  namespace: default
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"
 spec:
