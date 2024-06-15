@@ -46,7 +46,7 @@ spec:
               TZ: ${TIMEZONE}
               ND_DATAFOLDER: /data
               ND_CACHEFOLDER: /data/cache
-              ND_MUSICFOLDER: /music
+              ND_MUSICFOLDER: /music/Library/Music
               ND_LOGLEVEL: info
               ND_PORT: &port 80
               ND_SCANSCHEDULE: "@every 1h"
