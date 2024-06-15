@@ -45,13 +45,22 @@ spec:
           pgadmin:
             image:
               repository: docker.io/dpage/pgadmin4
-              tag: 8.8@sha256:6571236d0fe4a2e8945492134e04113bbdf877b4c6e227da9d858142c330c0d8
+              tag: 8.8@sha256:89ce52a67bf44d0ca18d22205b103e4488700c5305cecd5980528e472c2f36e3
             env:
               TZ: ${TIMEZONE}
               PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: "False"
             envFrom:
               - secretRef:
                   name: pgadmin-secret
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             resources:
               requests:
                 cpu: 50m
