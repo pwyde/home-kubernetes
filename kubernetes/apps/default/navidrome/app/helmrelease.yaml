@@ -50,15 +50,15 @@ spec:
               ND_MUSICFOLDER: /music/Library/Music
               ND_LOGLEVEL: info
               # ND_SCANSCHEDULE: "@every 1h"
-            probes:
-              liveness: &probes
-                enabled: true
-              readiness: *probes
-              startup:
-                enabled: true
-                spec:
-                  failureThreshold: 30
-                  periodSeconds: 5
+            # probes:
+            #   liveness: &probes
+            #     enabled: true
+            #   readiness: *probes
+            #   startup:
+            #     enabled: true
+            #     spec:
+            #       failureThreshold: 30
+            #       periodSeconds: 5
             resources:
               requests:
                 cpu: 10m
