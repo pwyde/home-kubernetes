@@ -84,10 +84,6 @@ spec:
         globalMounts:
           - path: /data
       config:
-        type: emptyDir
-        globalMounts:
-          - path: /config
-      navidrome-config:
         type: configMap
         name: navidrome-config
         globalMounts:
