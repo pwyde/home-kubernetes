@@ -26,8 +26,8 @@ EnableStarRating = true
 EnableTranscodingConfig = false
 EnableUserEditing = true
 
-ImageCacheSize = "512MB"
-TranscodingCacheSize = "512MB"
+ImageCacheSize = '512MB'
+TranscodingCacheSize = '512MB'
 
 ScanSchedule = "@every 24h"
 SessionTimeout = "120h"
