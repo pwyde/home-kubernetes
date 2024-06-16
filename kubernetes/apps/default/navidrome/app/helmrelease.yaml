@@ -38,7 +38,7 @@ spec:
             fsGroup: *gid
             fsGroupChangePolicy: "OnRootMismatch"
         containers:
-          it-tools:
+          navidrome:
             image:
               repository: ghcr.io/navidrome/navidrome
               tag: 0.52.5@sha256:4d42b180d99bfe95e1c058413e504b287559afac7b496606d27e4a89c187c339
