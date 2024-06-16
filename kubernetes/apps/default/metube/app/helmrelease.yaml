@@ -47,29 +47,11 @@ spec:
               # Path where intermediary download files will be saved. Set this to an SSD or RAM file-
               # system (i.e. tmpfs) for better performance.
               TEMP_DIR: /tmp
-            probes:
-              liveness: &probes
-                enabled: true
-              readiness: *probes
-              startup:
-                enabled: true
-                spec:
-                  failureThreshold: 30
-                  periodSeconds: 5
             resources:
               requests:
                 cpu: 10m
               limits:
                 memory: 1Gi
-    # defaultPodOptions:
-    #   securityContext:
-    #     runAsNonRoot: true
-    #     runAsUser: 5000
-    #     runAsGroup: 4000
-    #     fsGroup: 4000
-    #     fsGroupChangePolicy: OnRootMismatch
-    #     supplementalGroups: [10000]
-    #     seccompProfile: { type: RuntimeDefault }
     service:
       app:
         controller: *app

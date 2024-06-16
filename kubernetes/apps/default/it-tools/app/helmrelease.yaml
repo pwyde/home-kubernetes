@@ -44,15 +44,6 @@ spec:
               tag: 2024.5.13-a0bc346@sha256:1816d2b48db74c54ed77ec60f224cc3df22679f2aa7acc051278691687e8cc3b
             env:
               TZ: ${TIMEZONE}
-            probes:
-              liveness: &probes
-                enabled: true
-              readiness: *probes
-              startup:
-                enabled: true
-                spec:
-                  failureThreshold: 30
-                  periodSeconds: 5
             securityContext:
               readOnlyRootFilesystem: true
               allowPrivilegeEscalation: false
