@@ -85,14 +85,14 @@ spec:
           - hosts:
               - *host
     persistance:
-      # data:
-      #   existingClaim: data-metube
-      #   globalMounts:
-      #     - path: /data
-      # tmp:
-      #   type: emptyDir
-      #   globalMounts:
-      #     - path: /tmp
+      data:
+        existingClaim: data-metube
+        globalMounts:
+          - path: /data
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
       downloads:
         type: nfs
         server: ${TRUENAS_IP}
