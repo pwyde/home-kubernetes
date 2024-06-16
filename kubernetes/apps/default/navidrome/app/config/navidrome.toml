@@ -1,16 +1,16 @@
-LogLevel = "info"
+LogLevel = 'info'
 
-DataFolder = "/data"
-CacheFolder = "/data/cache"
-MusicFolder = "/music/Library/Music"
+DataFolder = '/data'
+CacheFolder = '/data/cache'
+MusicFolder = '/music/Library/Music'
 
 AutoImportPlaylists = false
 
 CoverArtPriority = 'folder.*, embedded, external'
 ArtistArtPriority = 'folder.*, external'
 
-DefaultLanguage = "en"
-DefaultTheme = Nord
+DefaultLanguage = 'en'
+DefaultTheme = 'Nord'
 
 EnableArtworkPrecache = true
 EnableCoverAnimation = true

@@ -46,9 +46,9 @@ spec:
               TZ: ${TIMEZONE}
               ND_LOGLEVEL: info
               ND_CONFIGFILE: /config/navidrome.toml
-              ND_DATAFOLDER: /data
-              ND_CACHEFOLDER: /data/cache
-              ND_MUSICFOLDER: /music/Library/Music
+              # ND_DATAFOLDER: /data
+              # ND_CACHEFOLDER: /data/cache
+              # ND_MUSICFOLDER: /music/Library/Music
               # ND_SCANSCHEDULE: "@every 1h"
             resources:
               requests:
