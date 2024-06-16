@@ -90,4 +90,5 @@ spec:
         path: ${NFS_PATH_MEDIA}
         globalMounts:
           - path: /mnt/media
+            readOnly: false
 
