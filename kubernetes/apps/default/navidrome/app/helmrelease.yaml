@@ -45,11 +45,10 @@ spec:
             env:
               TZ: ${TIMEZONE}
               ND_CONFIGFILE: /config/navidrome.toml
-              # ND_LOGLEVEL: info
               # ND_DATAFOLDER: /data
               # ND_CACHEFOLDER: /data/cache
               # ND_MUSICFOLDER: /music/Library/Music
-              # ND_AUTOIMPORTPLAYLISTS: false
+              # ND_LOGLEVEL: info
               # ND_SCANSCHEDULE: "@every 1h"
             resources:
               requests:
@@ -79,17 +78,19 @@ spec:
           - hosts:
               - *host
     persistence:
-      data:
-        existingClaim: data-navidrome
-        globalMounts:
-          - path: /data
       config:
+        type: emptyDir
+      navidrome-config:
         type: configMap
         name: navidrome-config
         globalMounts:
           - path: /config/navidrome.toml
             subPath: navidrome.toml
             readOnly: true
+      data:
+        existingClaim: data-navidrome
+        globalMounts:
+          - path: /data
       music:
         type: nfs
         server: ${TRUENAS_IP}
