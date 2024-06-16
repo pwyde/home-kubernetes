@@ -1,4 +1,4 @@
-LogLevel = 'debug'
+LogLevel = 'info'
 
 DataFolder = '/data'
 CacheFolder = '/data/cache'
@@ -10,7 +10,7 @@ CoverArtPriority = 'folder.*, embedded, external'
 ArtistArtPriority = 'folder.*, external'
 
 DefaultLanguage = 'en'
-DefaultTheme = 'Nord'
+DefaultTheme = 'Spotify-ish'
 
 EnableArtworkPrecache = true
 EnableCoverAnimation = true
