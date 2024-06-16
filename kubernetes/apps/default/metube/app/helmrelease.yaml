@@ -39,6 +39,8 @@ spec:
               tag: "2024-06-07@sha256:fbd4a47410aac4ce322eb655404c112cadb919418e0952a1a2836eb9c366ccea"
             env:
               TZ: ${TIMEZONE}
+              UID: 1000
+              GID: 4000
               DARK_MODE: true
               DOWNLOAD_DIRS_INDEXABLE: true
               DOWNLOAD_DIR: /mnt/media/Downloads/YouTube/
@@ -74,14 +76,14 @@ spec:
           - hosts:
               - *host
     persistance:
-      data:
-        existingClaim: data-metube
-        globalMounts:
-          - path: /data
-      tmp:
-        type: emptyDir
-        globalMounts:
-          - path: /tmp
+      # data:
+      #   existingClaim: data-metube
+      #   globalMounts:
+      #     - path: /data
+      # tmp:
+      #   type: emptyDir
+      #   globalMounts:
+      #     - path: /tmp
       downloads:
         type: nfs
         server: ${TRUENAS_IP}
