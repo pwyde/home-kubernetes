@@ -4,3 +4,9 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
+configMapGenerator:
+  - name: navidrome-config
+    files:
+      - navidrome.toml=./config/navidrome.toml
+generatorOptions:
+  disableNameSuffixHash: true

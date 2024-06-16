@@ -6,6 +6,6 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./it-tools/ks.yaml
-  - ./metube/ks.yaml
-  - ./navidrome/ks.yaml
+  # - ./metube/ks.yaml
+  # - ./navidrome/ks.yaml
   - ./portainer/ks.yaml

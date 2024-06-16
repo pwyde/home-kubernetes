@@ -1,0 +1,29 @@
+MusicFolder = '/music/Library/Music'
+
+AutoImportPlaylists = false
+
+CoverArtPriority = 'folder.*, embedded, external'
+ArtistArtPriority = 'folder.*, external'
+
+DefaultLanguage = 'en'
+DefaultTheme = 'Nord'
+
+EnableArtworkPrecache = true
+EnableCoverAnimation = true
+EnableDownloads = true
+EnableExternalServices = true
+EnableFavourites = true
+EnableGravatar = false
+EnableLogRedacting = false
+EnableMediaFileCoverArt = true
+EnableReplayGain = true
+EnableSharing = false
+EnableStarRating = true
+EnableTranscodingConfig = false
+EnableUserEditing = true
+
+ImageCacheSize = '512MB'
+TranscodingCacheSize = '512MB'
+
+ScanSchedule = '@every 24h'
+SessionTimeout = '120h'
