@@ -6,8 +6,8 @@ MusicFolder = "/music/Library/Music"
 
 AutoImportPlaylists = false
 
-CoverArtPriority = folder.*, embedded, external
-ArtistArtPriority = folder.*, external
+CoverArtPriority = 'folder.*, embedded, external'
+ArtistArtPriority = 'folder.*, external'
 
 DefaultLanguage = "en"
 DefaultTheme = Nord
