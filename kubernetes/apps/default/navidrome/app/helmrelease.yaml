@@ -49,7 +49,7 @@ spec:
               ND_CACHEFOLDER: /data/cache
               ND_MUSICFOLDER: /music/Library/Music
               ND_LOGLEVEL: info
-              ND_SCANSCHEDULE: "@every 1h"
+              # ND_SCANSCHEDULE: "@every 1h"
             probes:
               liveness: &probes
                 enabled: true
