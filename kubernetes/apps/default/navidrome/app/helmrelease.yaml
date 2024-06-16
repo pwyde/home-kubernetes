@@ -48,7 +48,7 @@ spec:
               ND_CONFIGFILE: /config/navidrome.toml
               ND_DATAFOLDER: /data
               ND_CACHEFOLDER: /data/cache
-              ND_MUSICFOLDER: /music/Library/Music
+              ND_MUSICFOLDER: /mnt/media/Library/Music
             resources:
               requests:
                 cpu: 10m
@@ -95,6 +95,6 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
         globalMounts:
-          - path: /music
+          - path: /mnt/media
             readOnly: true
 
