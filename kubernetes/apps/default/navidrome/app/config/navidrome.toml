@@ -1,4 +1,4 @@
-LogLevel = 'info'
+LogLevel = 'debug'
 
 DataFolder = '/data'
 CacheFolder = '/data/cache'

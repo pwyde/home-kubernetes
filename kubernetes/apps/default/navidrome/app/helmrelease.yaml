@@ -44,11 +44,11 @@ spec:
               tag: 0.52.5@sha256:4d42b180d99bfe95e1c058413e504b287559afac7b496606d27e4a89c187c339
             env:
               TZ: ${TIMEZONE}
-              ND_LOGLEVEL: info
+              ND_LOGLEVEL: debug
               ND_CONFIGFILE: /config/navidrome.toml
-              # ND_DATAFOLDER: /data
-              # ND_CACHEFOLDER: /data/cache
-              # ND_MUSICFOLDER: /music/Library/Music
+              ND_DATAFOLDER: /data
+              ND_CACHEFOLDER: /data/cache
+              ND_MUSICFOLDER: /music/Library/Music
               # ND_SCANSCHEDULE: "@every 1h"
             resources:
               requests:
