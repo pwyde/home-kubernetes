@@ -1,0 +1,113 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app audiobookshelf
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      audiobookshelf:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        replicas: 1
+        pod:
+          securityContext:
+            runAsUser: &uid 1000
+            runAsGroup: &gid 4000
+            fsGroup: *gid
+            fsGroupChangePolicy: "OnRootMismatch"
+        containers:
+          audiobookshelf:
+            image:
+              repository: ghcr.io/advplyr/audiobookshelf
+              tag: 2.10.1@sha256:192f1a3c9a6f2cef04e0dd3af123ea1cb66f676a6730e55f2753cb7b4c67c450
+            env:
+              TZ: ${TIMEZONE}
+              AUDIOBOOKSHELF_UID: *uid
+              AUDIOBOOKSHELF_GID: *gid
+              CONFIG_PATH: /config
+              METADATA_PATH: /config/metadata
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthcheck
+                    port: &port 80
+                  initialDelaySeconds: 30
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 100m
+                memory: 100M
+              limits:
+                memory: 300M
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *port
+    ingress:
+      app:
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host audiobookshelf-k3s.${SECRET_DOMAIN}
+          className: internal
+        hosts:
+          - host: *host
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    persistence:
+      config:
+        existingClaim: config-audiobookshelf
+        globalMounts:
+          - path: /config
+      cache:
+        type: emptyDir
+        globalMounts:
+          - path: /.npm
+      media:
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_PATH_MEDIA}
+        globalMounts:
+          - path: /mnt/media
+            readOnly: true
+

@@ -51,7 +51,7 @@ spec:
               ND_MUSICFOLDER: /mnt/media/Library/Music
             resources:
               requests:
-                cpu: 10m
+                cpu: 100m
                 memory: 250M
               limits:
                 memory: 500M
@@ -90,7 +90,7 @@ spec:
         existingClaim: data-navidrome
         globalMounts:
           - path: /data
-      music:
+      media:
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
