@@ -79,7 +79,7 @@ spec:
       app:
         annotations:
           external-dns.alpha.kubernetes.io/target: &host navidrome.${SECRET_DOMAIN}
-          className: internal
+        className: internal
         hosts:
           - host: *host
             paths:

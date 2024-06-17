@@ -82,7 +82,7 @@ spec:
       app:
         annotations:
           external-dns.alpha.kubernetes.io/target: &host audiobookshelf-k3s.${SECRET_DOMAIN}
-          className: internal
+        className: internal
         hosts:
           - host: *host
             paths:
