@@ -49,6 +49,21 @@ spec:
               ND_DATAFOLDER: /data
               ND_CACHEFOLDER: /data/cache
               ND_MUSICFOLDER: /mnt/media/Library/Music
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: &port 4533
+                  initialDelaySeconds: 30
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
             resources:
               requests:
                 cpu: 100m
@@ -60,7 +75,7 @@ spec:
         controller: *app
         ports:
           http:
-            port: 4533
+            port: *port
     ingress:
       app:
         annotations:
