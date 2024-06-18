@@ -6,5 +6,5 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./audiobookshelf/ks.yaml
-  - ./navidrome/ks.yaml
+  # - ./navidrome/ks.yaml
   # - ./radarr/ks.yaml

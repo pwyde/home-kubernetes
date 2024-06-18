@@ -5,11 +5,11 @@ metadata:
   name: data-navidrome
   namespace: media
   annotations:
-    volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"
+    volume.beta.kubernetes.io/storageClassName: "truenas-ssd-iscsi"
 spec:
-  storageClassName: truenas-ssd-nfs
+  storageClassName: truenas-ssd-iscsi
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 2Gi
