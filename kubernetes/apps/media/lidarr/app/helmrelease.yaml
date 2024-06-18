@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app radarr
+  name: &app lidarr
 spec:
   interval: 30m
   chart:
@@ -26,7 +26,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      radarr:
+      lidarr:
         annotations:
           reloader.stakater.com/auto: "true"
         initContainers:
@@ -36,21 +36,21 @@ spec:
               tag: 16
             envFrom: &envFrom
               - secretRef:
-                  name: radarr-secret
+                  name: lidarr-secret
         containers:
-          radarr:
+          lidarr:
             image:
-              repository: ghcr.io/onedr0p/radarr-develop
-              tag: 5.6.0.8846@sha256:99c264af3f2d177e6674a9b304b64a35261202de30e54b35d5758d40edd94366
+              repository: ghcr.io/onedr0p/lidarr-develop
+              tag: 2.3.3.4204@sha256:8061ccda9651601d112dfb1476cc32aa23826e4685c202da56ecb81b218ef491
             env:
-              RADARR__APP__INSTANCENAME: Radarr
-              RADARR__APP__THEME: dark
-              RADARR__AUTH__METHOD: External
-              RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
-              RADARR__LOG__DBENABLED: "False"
-              RADARR__LOG__LEVEL: info
-              RADARR__SERVER__PORT: &port 80
-              RADARR__UPDATE__BRANCH: develop
+              LIDARR__APP__INSTANCENAME: Lidarr
+              LIDARR__APP__THEME: dark
+              LIDARR__AUTH__METHOD: External
+              LIDARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              LIDARR__LOG__DBENABLED: "False"
+              LIDARR__LOG__LEVEL: info
+              LIDARR__SERVER__PORT: &port 80
+              LIDARR__UPDATE__BRANCH: develop
               TZ: ${TIMEZONE}
             envFrom: *envFrom
             probes:
@@ -95,7 +95,7 @@ spec:
     ingress:
       app:
         annotations:
-          external-dns.alpha.kubernetes.io/target: &host radarr-k3s.${SECRET_DOMAIN}
+          external-dns.alpha.kubernetes.io/target: &host lidarr-k3s.${SECRET_DOMAIN}
         className: internal
         hosts:
           - host: *host
@@ -109,15 +109,7 @@ spec:
               - *host
     persistence:
       config:
-        existingClaim: config-radarr
-      pushover-notify:
-        type: configMap
-        name: radarr-pushover-notify
-        defaultMode: 0775
-        globalMounts:
-          - path: /scripts/pushover-notify.sh
-            subPath: pushover-notify.sh
-            readOnly: true
+        existingClaim: config-lidarr
       tmp:
         type: emptyDir
       media:

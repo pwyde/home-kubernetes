@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app radarr
+  name: &app bazarr
 spec:
   interval: 30m
   chart:
@@ -26,7 +26,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      radarr:
+      bazarr:
         annotations:
           reloader.stakater.com/auto: "true"
         initContainers:
@@ -36,21 +36,13 @@ spec:
               tag: 16
             envFrom: &envFrom
               - secretRef:
-                  name: radarr-secret
+                  name: bazarr-secret
         containers:
-          radarr:
+          bazarr:
             image:
-              repository: ghcr.io/onedr0p/radarr-develop
-              tag: 5.6.0.8846@sha256:99c264af3f2d177e6674a9b304b64a35261202de30e54b35d5758d40edd94366
+              repository: ghcr.io/onedr0p/bazarr
+              tag: 1.4.3@sha256:d2b70813f7d636fb1ab3448e13ca4074630b63216c6c6d02d034cd5d9e938ea3
             env:
-              RADARR__APP__INSTANCENAME: Radarr
-              RADARR__APP__THEME: dark
-              RADARR__AUTH__METHOD: External
-              RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
-              RADARR__LOG__DBENABLED: "False"
-              RADARR__LOG__LEVEL: info
-              RADARR__SERVER__PORT: &port 80
-              RADARR__UPDATE__BRANCH: develop
               TZ: ${TIMEZONE}
             envFrom: *envFrom
             probes:
@@ -59,8 +51,8 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /ping
-                    port: *port
+                    path: /health
+                    port: &port 6767
                   initialDelaySeconds: 30
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -95,7 +87,7 @@ spec:
     ingress:
       app:
         annotations:
-          external-dns.alpha.kubernetes.io/target: &host radarr-k3s.${SECRET_DOMAIN}
+          external-dns.alpha.kubernetes.io/target: &host bazarr-k3s.${SECRET_DOMAIN}
         className: internal
         hosts:
           - host: *host
@@ -109,17 +101,7 @@ spec:
               - *host
     persistence:
       config:
-        existingClaim: config-radarr
-      pushover-notify:
-        type: configMap
-        name: radarr-pushover-notify
-        defaultMode: 0775
-        globalMounts:
-          - path: /scripts/pushover-notify.sh
-            subPath: pushover-notify.sh
-            readOnly: true
-      tmp:
-        type: emptyDir
+        existingClaim: config-bazarr
       media:
         type: nfs
         server: ${TRUENAS_IP}

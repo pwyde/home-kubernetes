@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app radarr
+  name: &app prowlarr
 spec:
   interval: 30m
   chart:
@@ -26,7 +26,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      radarr:
+      prowlarr:
         annotations:
           reloader.stakater.com/auto: "true"
         initContainers:
@@ -36,21 +36,21 @@ spec:
               tag: 16
             envFrom: &envFrom
               - secretRef:
-                  name: radarr-secret
+                  name: prowlarr-secret
         containers:
-          radarr:
+          prowlarr:
             image:
-              repository: ghcr.io/onedr0p/radarr-develop
-              tag: 5.6.0.8846@sha256:99c264af3f2d177e6674a9b304b64a35261202de30e54b35d5758d40edd94366
+              repository: ghcr.io/onedr0p/prowlarr-develop
+              tag: 1.18.0.4543@sha256:3b7016455028840cae468f1227560e84926c47d1d30b4f73c269704b3f97362f
             env:
-              RADARR__APP__INSTANCENAME: Radarr
-              RADARR__APP__THEME: dark
-              RADARR__AUTH__METHOD: External
-              RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
-              RADARR__LOG__DBENABLED: "False"
-              RADARR__LOG__LEVEL: info
-              RADARR__SERVER__PORT: &port 80
-              RADARR__UPDATE__BRANCH: develop
+              PROWLARR__APP__INSTANCENAME: Prowlarr
+              PROWLARR__APP__THEME: dark
+              PROWLARR__AUTH__METHOD: External
+              PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              PROWLARR__LOG__DBENABLED: "False"
+              PROWLARR__LOG__LEVEL: info
+              PROWLARR__SERVER__PORT: &port 80
+              PROWLARR__UPDATE__BRANCH: develop
               TZ: ${TIMEZONE}
             envFrom: *envFrom
             probes:
@@ -95,7 +95,7 @@ spec:
     ingress:
       app:
         annotations:
-          external-dns.alpha.kubernetes.io/target: &host radarr-k3s.${SECRET_DOMAIN}
+          external-dns.alpha.kubernetes.io/target: &host prowlarr-k3s.${SECRET_DOMAIN}
         className: internal
         hosts:
           - host: *host
@@ -109,20 +109,6 @@ spec:
               - *host
     persistence:
       config:
-        existingClaim: config-radarr
-      pushover-notify:
-        type: configMap
-        name: radarr-pushover-notify
-        defaultMode: 0775
-        globalMounts:
-          - path: /scripts/pushover-notify.sh
-            subPath: pushover-notify.sh
-            readOnly: true
+        type: emptyDir
       tmp:
         type: emptyDir
-      media:
-        type: nfs
-        server: ${TRUENAS_IP}
-        path: ${NFS_PATH_MEDIA}
-        globalMounts:
-          - path: /data
