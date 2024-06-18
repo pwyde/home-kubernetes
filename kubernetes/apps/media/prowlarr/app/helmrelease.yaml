@@ -109,6 +109,6 @@ spec:
               - *host
     persistence:
       config:
-        type: emptyDir
+        existingClaim: config-prowlarr
       tmp:
         type: emptyDir
