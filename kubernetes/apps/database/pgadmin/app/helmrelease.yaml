@@ -34,7 +34,6 @@ spec:
       pgadmin:
         annotations:
           reloader.stakater.com/auto: "true"
-        pod:
         containers:
           pgadmin:
             image:
