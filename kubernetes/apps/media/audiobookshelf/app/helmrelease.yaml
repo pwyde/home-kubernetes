@@ -101,7 +101,7 @@ spec:
       metadata:
         existingClaim: metadata-audiobookshelf
         globalMounts:
-          - path: /config
+          - path: /metadata
       cache:
         type: emptyDir
         globalMounts:
