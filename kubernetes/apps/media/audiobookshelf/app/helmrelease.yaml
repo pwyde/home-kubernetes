@@ -107,6 +107,6 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
         globalMounts:
-          - path: /mnt/media
+          - path: /data
             readOnly: true
 
