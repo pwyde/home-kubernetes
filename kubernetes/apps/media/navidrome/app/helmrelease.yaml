@@ -29,13 +29,6 @@ spec:
       navidrome:
         annotations:
           reloader.stakater.com/auto: "true"
-        replicas: 1
-        pod:
-          securityContext:
-            runAsUser: &uid 1000
-            runAsGroup: &gid 4000
-            fsGroup: *gid
-            fsGroupChangePolicy: "OnRootMismatch"
         containers:
           navidrome:
             image:
@@ -69,6 +62,15 @@ spec:
                 memory: 250M
               limits:
                 memory: 500M
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: &uid 1000
+        runAsGroup: &gid 4000
+        fsGroup: *gid
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups: [10000]
+        seccompProfile: { type: RuntimeDefault }
     service:
       app:
         controller: *app
