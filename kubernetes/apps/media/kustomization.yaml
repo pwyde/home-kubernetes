@@ -7,4 +7,4 @@ resources:
   # Flux-Kustomizations
   - ./audiobookshelf/ks.yaml
   - ./navidrome/ks.yaml
-  - ./radarr/ks.yaml
+  # - ./radarr/ks.yaml
