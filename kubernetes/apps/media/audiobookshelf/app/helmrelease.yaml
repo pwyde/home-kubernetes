@@ -36,8 +36,6 @@ spec:
               tag: 2.10.1@sha256:192f1a3c9a6f2cef04e0dd3af123ea1cb66f676a6730e55f2753cb7b4c67c450
             env:
               TZ: ${TIMEZONE}
-              AUDIOBOOKSHELF_UID: *uid
-              AUDIOBOOKSHELF_GID: *gid
               CONFIG_PATH: /config
               METADATA_PATH: /metadata
             probes:
