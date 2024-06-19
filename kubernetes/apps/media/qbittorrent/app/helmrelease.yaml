@@ -84,6 +84,7 @@ spec:
               QBT_BitTorrent__Session__MaxConnections: -1
               # Settings > Connection > Connection Limits > Maximum number of connections per torrent.
               QBT_BitTorrent__Session__MaxConnectionsPerTorrent: -1
+              # Settings > BitTorrent > Seed Limits > Then: Enable super seeding for torrent.
               QBT_BitTorrent__Session__MaxRatioAction: 2
               # Settings > Connection > Connection Limits > Global maximum number of upload slots.
               QBT_BitTorrent__Session__MaxUploads: -1
