@@ -74,8 +74,8 @@ spec:
               QBT_Network__PortForwardingEnabled: false
               QBT_Network__Proxy__OnlyForTorrents: false
               QBT_Preferences__Scheduler__days: EveryDay
-              QBT_Preferences__Scheduler__end_time: @Variant(\0\0\0\xf\0m\xdd\0)
-              QBT_Preferences__Scheduler__start_time: @Variant(\0\0\0\xf\x1\x80\x85\x80)
+              QBT_Preferences__Scheduler__end_time: '@Variant(\0\0\0\xf\0m\xdd\0)'
+              QBT_Preferences__Scheduler__start_time: '@Variant(\0\0\0\xf\x1\x80\x85\x80)'
               QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
               QBT_Preferences__WebUI__AuthSubnetWhitelist: |-
                 192.168.20.0/24
