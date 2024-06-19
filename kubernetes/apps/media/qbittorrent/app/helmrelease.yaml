@@ -48,7 +48,7 @@ spec:
               # QBT_BitTorrent__Session__AnnounceToAllTrackers: true
               # Settings > Connection > Peer connection protocl.
               QBT_BitTorrent__Session__BTProtocol: TCP
-              # QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
+              QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
               # Settings > Downlods > Saving Management > Default Save Path (complete).
               QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
               # Settings > Downloads > Saving Management > Default Torrent Management Mode. This will set it to "Automatic".
@@ -94,6 +94,7 @@ spec:
               # ???
               # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
               # QBT_Core__AutoDeleteAddedTorrentFile: Never
+              # Settings > Connection > Use UPnP / NAT-PMP port forwarding from my router.
               QBT_Network__PortForwardingEnabled: false
               # QBT_Network__Proxy__OnlyForTorrents: false
               # Settings > Speed > When.
