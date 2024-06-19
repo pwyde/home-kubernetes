@@ -51,6 +51,11 @@ spec:
                   fieldRef:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
+              QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
+              QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
+              QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
+              QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
+              QBT_BitTorrent__Session__FinishedTorrentExportDirectory: /config/qBittorrent/torrent_files
             probes:
               liveness: &probes
                 enabled: true
