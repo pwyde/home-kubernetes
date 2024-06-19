@@ -88,7 +88,7 @@ spec:
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
               # QBT_BitTorrent__Session__QueueingSystemEnabled: true
               # QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
-              # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
+              QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
               # QBT_Core__AutoDeleteAddedTorrentFile: Never
               # QBT_Network__PortForwardingEnabled: false
               # QBT_Network__Proxy__OnlyForTorrents: false
