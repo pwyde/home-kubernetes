@@ -40,8 +40,9 @@ spec:
               QBITTORRENT__BT_PORT: &bittorrentPort 60112
               # Settings > Advanced > Physical memory (RAM) usage limit (libtorrent >=2.0).
               QBT_Application__MemoryWorkingSetLimit: 10000
-              # Settings > Speed > Alternative Rate Limits.
+              # Settings > Speed > Alternative Rate Limits > Download.
               QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 7812
+              # Settings > Speed > Alternative Rate Limits > Upload.
               QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 1171
               # QBT_BitTorrent__Session__AnnounceToAllTrackers: true
               # Settings > Connection > Peer connection protocl.
@@ -49,7 +50,8 @@ spec:
               # QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
               # Settings > Downlods > Saving Management > Default Save Path (complete).
               QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
-              # QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
+              # Settings > Downloads > Saving Management > Default Torrent Management Mode.
+              QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
               # QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
               # QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
               # Settings > Downlods > Saving Management > Copy torrent files for finished downloads to.
