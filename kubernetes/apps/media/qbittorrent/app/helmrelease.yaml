@@ -71,7 +71,7 @@ spec:
                   fieldRef:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
-              # QBT_BitTorrent__Session__LSDEnabled: false
+              QBT_BitTorrent__Session__LSDEnabled: false
               # Settings > BitTorrent > Torrent Queueing > Maximum active downloads.
               QBT_BitTorrent__Session__MaxActiveDownloads: 100
               # Settings > BitTorrent > Torrent Queueing > Maximum active torrents.
@@ -88,6 +88,7 @@ spec:
               # Settings > Connection > Connection Limits > Maximum number of upload slots per torrent.
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
               # QBT_BitTorrent__Session__QueueingSystemEnabled: true
+              # Settings > Advanced > Reannounce to all trackers when IP or port changed.
               QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
               # ???
               # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
