@@ -7,6 +7,7 @@ metadata:
 data:
   TIMEZONE: "Europe/Stockholm"
   CLUSTER_CIDR: "10.69.0.0/16"
+  SERVICE_CIDR: "10.96.0.0/16"
   NODE_CIDR: "192.168.20.0/24"
   K3S_1_IP: "192.168.20.21"
   K3S_2_IP: "192.168.20.22"
