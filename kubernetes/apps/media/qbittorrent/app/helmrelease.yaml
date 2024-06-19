@@ -50,10 +50,11 @@ spec:
               # QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
               # Settings > Downlods > Saving Management > Default Save Path (complete).
               QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
-              # Settings > Downloads > Saving Management > Default Torrent Management Mode. This will set "Automatic".
+              # Settings > Downloads > Saving Management > Default Torrent Management Mode. This will set it to "Automatic".
               QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
-              # QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
-              # Settings > Downloads > Saving Management > When Default Save Path changed.
+              # Settings > Downloads > Saving Management > When Category Save Path changed. This will set it to "Relocate torrent".
+              QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
+              # Settings > Downloads > Saving Management > When Default Save Path changed. This will set it to "Relocate torrent".
               QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
               # Settings > Downlods > Saving Management > Copy torrent files for finished downloads to.
               QBT_BitTorrent__Session__FinishedTorrentExportDirectory: /config/qBittorrent/torrent_files
@@ -69,7 +70,7 @@ spec:
                   fieldRef:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
-              # QBT_BitTorrent__Session__LSDEnabled: false
+              QBT_BitTorrent__Session__LSDEnabled: false
               # Settings > BitTorrent > Torrent Queueing > Maximum active downloads
               QBT_BitTorrent__Session__MaxActiveDownloads: 100
               # Settings > BitTorrent > Torrent Queueing > Maximum active torrentss
