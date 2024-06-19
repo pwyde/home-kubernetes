@@ -50,10 +50,11 @@ spec:
               # QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
               # Settings > Downlods > Saving Management > Default Save Path (complete).
               QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
-              # Settings > Downloads > Saving Management > Default Torrent Management Mode.
+              # Settings > Downloads > Saving Management > Default Torrent Management Mode. This will set "Automatic".
               QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
               # QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
-              # QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
+              # Settings > Downloads > Saving Management > When Default Save Path changed.
+              QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
               # Settings > Downlods > Saving Management > Copy torrent files for finished downloads to.
               QBT_BitTorrent__Session__FinishedTorrentExportDirectory: /config/qBittorrent/torrent_files
               # QBT_BitTorrent__Session__GlobalDLSpeedLimit: 0
