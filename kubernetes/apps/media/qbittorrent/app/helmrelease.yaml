@@ -38,50 +38,71 @@ spec:
               TZ: ${TIMEZONE}
               QBITTORRENT__PORT: &port 80
               QBITTORRENT__BT_PORT: &bittorrentPort 60112
+              # Settings > Advanced > Physical memory (RAM) usage limit (libtorrent >=2.0).
               QBT_Application__MemoryWorkingSetLimit: 10000
+              # Settings > Speed > Alternative Rate Limits.
               QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 7812
               QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 1171
-              QBT_BitTorrent__Session__AnnounceToAllTrackers: true
+              # QBT_BitTorrent__Session__AnnounceToAllTrackers: true
+              # Settings > Connection > Peer connection protocl.
               QBT_BitTorrent__Session__BTProtocol: TCP
-              QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
+              # QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
+              # Settings > Downlods > Saving Management > Default Save Path (complete).
               QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
-              QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
-              QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
-              QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
+              # QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
+              # QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
+              # QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
+              # Settings > Downlods > Saving Management > Copy torrent files for finished downloads to.
               QBT_BitTorrent__Session__FinishedTorrentExportDirectory: /config/qBittorrent/torrent_files
-              QBT_BitTorrent__Session__GlobalDLSpeedLimit: 0
+              # QBT_BitTorrent__Session__GlobalDLSpeedLimit: 0
+              # Settings > BitTorrent > Speed Limits > When ratio reaches.
               QBT_BitTorrent__Session__GlobalMaxRatio: 10
-              QBT_BitTorrent__Session__GlobalUPSpeedLimit: 0
+              # QBT_BitTorrent__Session__GlobalUPSpeedLimit: 0
+              # Settings > Advanced > Networking > Network interface.
               QBT_BitTorrent__Session__Interface: eth0
+              # Settings > Advanced > Networking > Optional IP address to bind to.
               QBT_BitTorrent__Session__InterfaceAddress:
                 valueFrom:
                   fieldRef:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
-              QBT_BitTorrent__Session__LSDEnabled: false
+              # QBT_BitTorrent__Session__LSDEnabled: false
+              # Settings > BitTorrent > Torrent Queueing > Maximum active downloads
               QBT_BitTorrent__Session__MaxActiveDownloads: 100
+              # Settings > BitTorrent > Torrent Queueing > Maximum active torrentss
               QBT_BitTorrent__Session__MaxActiveTorrents: 200
+              # Settings > BitTorrent > Torrent Queueing > Maximum active uploadss
               QBT_BitTorrent__Session__MaxActiveUploads: 200
+              # Settings > Connection > Connection Limits > Global maximum number of connections.
               QBT_BitTorrent__Session__MaxConnections: -1
+              # Settings > Connection > Connection Limits > Maximum number of connections per torrent.
               QBT_BitTorrent__Session__MaxConnectionsPerTorrent: -1
               QBT_BitTorrent__Session__MaxRatioAction: 2
+              # Settings > Connection > Connection Limits > Global maximum number of upload slots.
               QBT_BitTorrent__Session__MaxUploads: -1
+              # Settings > Connection > Connection Limits > Maximum number of upload slots per torrent.
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
-              QBT_BitTorrent__Session__QueueingSystemEnabled: true
-              QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
-              QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
-              QBT_Core__AutoDeleteAddedTorrentFile: Never
-              QBT_Network__PortForwardingEnabled: false
-              QBT_Network__Proxy__OnlyForTorrents: false
+              # QBT_BitTorrent__Session__QueueingSystemEnabled: true
+              # QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
+              # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
+              # QBT_Core__AutoDeleteAddedTorrentFile: Never
+              # QBT_Network__PortForwardingEnabled: false
+              # QBT_Network__Proxy__OnlyForTorrents: false
+              # Settings > Speed > When.
               QBT_Preferences__Scheduler__days: EveryDay
+              # Settings > Speed > To.
               QBT_Preferences__Scheduler__end_time: '@Variant(\0\0\0\xf\0m\xdd\0)'
+              # Settings > Speed > From.
               QBT_Preferences__Scheduler__start_time: '@Variant(\0\0\0\xf\x1\x80\x85\x80)'
-              QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
+              # QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
+              # Settings > WebUI > Bypass authentication for clients in whitelisted IP subnets.
               QBT_Preferences__WebUI__AuthSubnetWhitelist: |-
                 192.168.20.0/24
-              QBT_Preferences__WebUI__LocalHostAuth: false
+              # QBT_Preferences__WebUI__LocalHostAuth: false
+              # Settings > WebUI > Use Alternative WebUI.
               QBT_Preferences__WebUI__AlternativeUIEnabled: true
-              QBT_Preferences__WebUI__ReverseProxySupportEnabled: false
+              # QBT_Preferences__WebUI__ReverseProxySupportEnabled: false
+              # Settings > WebUI > Use Alternative WebUI.
               QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
             probes:
               liveness: &probes
