@@ -88,7 +88,7 @@ spec:
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
               # QBT_BitTorrent__Session__QueueingSystemEnabled: true
               # QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
-              # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
+              QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
               # QBT_Core__AutoDeleteAddedTorrentFile: Never
               # QBT_Network__PortForwardingEnabled: false
               # QBT_Network__Proxy__OnlyForTorrents: false
@@ -98,6 +98,7 @@ spec:
               QBT_Preferences__Scheduler__end_time: '@Variant(\0\0\0\xf\0m\xdd\0)'
               # Settings > Speed > From.
               QBT_Preferences__Scheduler__start_time: '@Variant(\0\0\0\xf\x1\x80\x85\x80)'
+              # Settings > WebUI > Bypass authentication for clients in whitelisted IP subnets. This will enable the setting.
               QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
               # Settings > WebUI > Bypass authentication for clients in whitelisted IP subnets.
               QBT_Preferences__WebUI__AuthSubnetWhitelist: |-
