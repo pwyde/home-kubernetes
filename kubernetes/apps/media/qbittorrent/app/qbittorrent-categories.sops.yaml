@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: qbittorrent-categories
+    namespace: media
+stringData:
+    categories.json: ENC[AES256_GCM,data:ljEbM2W0J5adMTRUTwYJB+gpAKsocDt5y65l85Pr/+iKNPnvqTL2CG6D8Ucs4wr+i2m3ngqr40gfnxPo0Y4PK9BLZZnTtBj6JtdcpaBb+lXsJPLDU/OzwUAee593z1Wr2knnNbMYbh2SRsxU/j80TJLHACjVEpoW7xta25Sn5s2xCYs+kPTeHS7oMStb5p5snW1gMEVgR73Wt/y7Ed0opzwPkLRgIM7T4yfbUiNvL7tWAZV1S49mATOi1RoDZsDOraD3bofTm+tOVBxhLC/iDEiv5uqMB/5pZlCq7F5S2m9ZWfoAeeTL7ud0717z35/gVFF+Ara5i7mFce9UZaQeJ6I/GLDM9GLLHVdkDr/RnJ/btCDJmUnjRtFLtKgdbtaPiaiKoCcSma+4suZsKEgIvqfSHodhrv1ek7G1fAaQ6FUa3tJvqa4EMdDWBqkTbD2DCftGPQX/HsJXTjR2WzwEBsnx/oZkcPunMU2Dmcwi+faEKip7MA==,iv:IlWl0kspyjW0d1teTSvQkPUkGGYrM0vCJPVEJ79kBCU=,tag:svF1pfGpMpg1Jys0GEoWXA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1lwq7plulkvt5qek49zd4dukffcjlmh9kk3t9duhyaayvauluspcqucrln6
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLaFRLMmo1SlF4ajJ2UHdp
+            NWsyQ0NhNCsrT25CMkxEQ25scHg5eGJTYkFNCmxJekxEUjNPQ2xNTlNWQlZhb0Fa
+            QUZLS2ZvSUtHK1lhYXdyZFFjSmwwcTAKLS0tIFptNGlkN0FDN3BSbWFpditVby82
+            L2xqWTNNQ01aMTc4RlovVVY2eFNUU2cKAirs169WQ//LcCT+hpkE/gMW+3onVzGN
+            usLPFQJdF8XHTP86UalMcaEgCjGTVTSd9OgOR+UOWqfdJTDvksnYig==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-06-19T22:40:13Z"
+    mac: ENC[AES256_GCM,data:JT8YW1rs5XRvJCnlP3iyHuOcdP06IbqgjyaZzU/uI/hTXG84aCZ+/pyRVrT/IR2TBfBjpJ0B/jQEcjTzQn+xRTt3jnuflN6Z5dO1NiSivRDCNWCNGwP7GY+ap4CZ9O1g4Y2xZD54XRk7fcT9xICumcdoLLVtek6m4w+RjDkMnrc=,iv:mL3+iKppfNdTKXaWsG3l4ReHN4xCOH6RNyHXPC4RHjQ=,tag:b7gJ6RM14XxN4LjcfyLRDw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
