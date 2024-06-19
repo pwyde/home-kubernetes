@@ -45,17 +45,19 @@ spec:
               QBT_Preferences__WebUI__LocalHostAuth: false
               QBT_Preferences__WebUI__AlternativeUIEnabled: true
               QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
+              QBT_BitTorrent__Session__BTProtocol: TCP
+              QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
+              QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
+              QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
+              QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
+              QBT_BitTorrent__Session__FinishedTorrentExportDirectory: /config/qBittorrent/torrent_files
               QBT_BitTorrent__Session__Interface: eth0
               QBT_BitTorrent__Session__InterfaceAddress:
                 valueFrom:
                   fieldRef:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
-              QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
-              QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
-              QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
-              QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
-              QBT_BitTorrent__Session__FinishedTorrentExportDirectory: /config/qBittorrent/torrent_files
+              QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
             probes:
               liveness: &probes
                 enabled: true
