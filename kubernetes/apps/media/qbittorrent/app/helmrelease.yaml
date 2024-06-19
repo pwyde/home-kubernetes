@@ -45,7 +45,7 @@ spec:
               # Settings > Speed > Alternative Rate Limits > Upload.
               QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 1171
               # ???
-              QBT_BitTorrent__Session__AnnounceToAllTrackers: true
+              # QBT_BitTorrent__Session__AnnounceToAllTrackers: true
               # Settings > Connection > Peer connection protocl.
               QBT_BitTorrent__Session__BTProtocol: TCP
               # Settings > Speed > Schedule the use of alternative rate limits.
@@ -84,7 +84,7 @@ spec:
               QBT_BitTorrent__Session__MaxConnections: -1
               # Settings > Connection > Connection Limits > Maximum number of connections per torrent.
               QBT_BitTorrent__Session__MaxConnectionsPerTorrent: -1
-              # QBT_BitTorrent__Session__MaxRatioAction: 2
+              QBT_BitTorrent__Session__MaxRatioAction: 2
               # Settings > Connection > Connection Limits > Global maximum number of upload slots.
               QBT_BitTorrent__Session__MaxUploads: -1
               # Settings > Connection > Connection Limits > Maximum number of upload slots per torrent.
