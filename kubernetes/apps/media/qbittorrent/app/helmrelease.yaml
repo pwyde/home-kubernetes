@@ -45,19 +45,30 @@ spec:
               QBT_Preferences__WebUI__LocalHostAuth: false
               QBT_Preferences__WebUI__AlternativeUIEnabled: true
               QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
+              QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 7812
+              QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 1171
               QBT_BitTorrent__Session__BTProtocol: TCP
+              QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
               QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
               QBT_BitTorrent__Session__DisableAutoTMMByDefault: false
               QBT_BitTorrent__Session__DisableAutoTMMTriggers__CategorySavePathChanged: false
               QBT_BitTorrent__Session__DisableAutoTMMTriggers__DefaultSavePathChanged: false
               QBT_BitTorrent__Session__FinishedTorrentExportDirectory: /config/qBittorrent/torrent_files
+              QBT_BitTorrent__Session__GlobalDLSpeedLimit: 0
+              QBT_BitTorrent__Session__GlobalMaxRatio: 10
+              QBT_BitTorrent__Session__GlobalUPSpeedLimit: 0
               QBT_BitTorrent__Session__Interface: eth0
               QBT_BitTorrent__Session__InterfaceAddress:
                 valueFrom:
                   fieldRef:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
-              QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
+              QBT_BitTorrent__Session__MaxActiveDownloads: 100
+              QBT_BitTorrent__Session__MaxActiveTorrents: 200
+              QBT_BitTorrent__Session__MaxActiveUploads: 200
+              QBT_BitTorrent__Session__MaxConnections: -1
+              QBT_BitTorrent__Session__MaxConnectionsPerTorrent: -1
+              # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
             probes:
               liveness: &probes
                 enabled: true
