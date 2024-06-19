@@ -44,7 +44,8 @@ spec:
               QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 7812
               # Settings > Speed > Alternative Rate Limits > Upload.
               QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 1171
-              QBT_BitTorrent__Session__AnnounceToAllTrackers: true
+              # ???
+              # QBT_BitTorrent__Session__AnnounceToAllTrackers: true
               # Settings > Connection > Peer connection protocl.
               QBT_BitTorrent__Session__BTProtocol: TCP
               # QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
@@ -87,7 +88,7 @@ spec:
               # Settings > Connection > Connection Limits > Maximum number of upload slots per torrent.
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
               # QBT_BitTorrent__Session__QueueingSystemEnabled: true
-              # QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
+              QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
               # ???
               # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
               # QBT_Core__AutoDeleteAddedTorrentFile: Never
