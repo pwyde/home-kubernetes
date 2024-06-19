@@ -81,6 +81,7 @@ spec:
                 192.168.20.0/24
               QBT_Preferences__WebUI__LocalHostAuth: false
               QBT_Preferences__WebUI__AlternativeUIEnabled: true
+              QBT_Preferences__WebUI__ReverseProxySupportEnabled: false
               QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
             probes:
               liveness: &probes
