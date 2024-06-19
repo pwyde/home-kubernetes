@@ -98,7 +98,7 @@ spec:
               QBT_Preferences__Scheduler__end_time: '@Variant(\0\0\0\xf\0m\xdd\0)'
               # Settings > Speed > From.
               QBT_Preferences__Scheduler__start_time: '@Variant(\0\0\0\xf\x1\x80\x85\x80)'
-              # QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
+              QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled: true
               # Settings > WebUI > Bypass authentication for clients in whitelisted IP subnets.
               QBT_Preferences__WebUI__AuthSubnetWhitelist: |-
                 192.168.20.0/24
