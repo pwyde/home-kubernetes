@@ -71,24 +71,24 @@ spec:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
               # QBT_BitTorrent__Session__LSDEnabled: false
-              # Settings > BitTorrent > Torrent Queueing > Maximum active downloads
+              # Settings > BitTorrent > Torrent Queueing > Maximum active downloads.
               QBT_BitTorrent__Session__MaxActiveDownloads: 100
-              # Settings > BitTorrent > Torrent Queueing > Maximum active torrentss
+              # Settings > BitTorrent > Torrent Queueing > Maximum active torrents.
               QBT_BitTorrent__Session__MaxActiveTorrents: 200
-              # Settings > BitTorrent > Torrent Queueing > Maximum active uploadss
+              # Settings > BitTorrent > Torrent Queueing > Maximum active uploads.
               QBT_BitTorrent__Session__MaxActiveUploads: 200
               # Settings > Connection > Connection Limits > Global maximum number of connections.
               QBT_BitTorrent__Session__MaxConnections: -1
               # Settings > Connection > Connection Limits > Maximum number of connections per torrent.
               QBT_BitTorrent__Session__MaxConnectionsPerTorrent: -1
-              QBT_BitTorrent__Session__MaxRatioAction: 2
+              # QBT_BitTorrent__Session__MaxRatioAction: 2
               # Settings > Connection > Connection Limits > Global maximum number of upload slots.
               QBT_BitTorrent__Session__MaxUploads: -1
               # Settings > Connection > Connection Limits > Maximum number of upload slots per torrent.
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
               # QBT_BitTorrent__Session__QueueingSystemEnabled: true
               # QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
-              QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
+              # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
               # QBT_Core__AutoDeleteAddedTorrentFile: Never
               # QBT_Network__PortForwardingEnabled: false
               # QBT_Network__Proxy__OnlyForTorrents: false
