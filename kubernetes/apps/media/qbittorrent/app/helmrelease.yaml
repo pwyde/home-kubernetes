@@ -72,6 +72,8 @@ spec:
               QBT_BitTorrent__Session__MaxRatioAction: 2
               QBT_BitTorrent__Session__MaxUploads: -1
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
+              QBT_BitTorrent__Session__QueueingSystemEnabled: true
+              QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
               # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
             probes:
               liveness: &probes
