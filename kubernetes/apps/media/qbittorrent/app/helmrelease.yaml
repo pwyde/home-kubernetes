@@ -47,6 +47,7 @@ spec:
               QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
               QBT_BitTorrent__Session__AlternativeGlobalDLSpeedLimit: 7812
               QBT_BitTorrent__Session__AlternativeGlobalUPSpeedLimit: 1171
+              QBT_BitTorrent__Session__AnnounceToAllTrackers: true
               QBT_BitTorrent__Session__BTProtocol: TCP
               QBT_BitTorrent__Session__BandwidthSchedulerEnabled: true
               QBT_BitTorrent__Session__DefaultSavePath: /data/Downloads/Torrents
@@ -74,7 +75,7 @@ spec:
               QBT_BitTorrent__Session__MaxUploadsPerTorrent: -1
               QBT_BitTorrent__Session__QueueingSystemEnabled: true
               QBT_BitTorrent__Session__ReannounceWhenAddressChanged: true
-              # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
+              QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
             probes:
               liveness: &probes
                 enabled: true
