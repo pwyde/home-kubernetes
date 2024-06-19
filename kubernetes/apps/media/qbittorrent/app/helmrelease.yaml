@@ -71,6 +71,7 @@ spec:
                   fieldRef:
                     fieldPath: status.podIP
               QBT_BitTorrent__Session__InterfaceName: eth0
+              # Settings > BitTorrent > Privacy > Enable Local Peer Discovery to find more peers.
               QBT_BitTorrent__Session__LSDEnabled: false
               # Settings > BitTorrent > Torrent Queueing > Maximum active downloads.
               QBT_BitTorrent__Session__MaxActiveDownloads: 100
@@ -93,7 +94,7 @@ spec:
               # ???
               # QBT_BitTorrent__Session__UseAlternativeGlobalSpeedLimit: true
               # QBT_Core__AutoDeleteAddedTorrentFile: Never
-              # QBT_Network__PortForwardingEnabled: false
+              QBT_Network__PortForwardingEnabled: false
               # QBT_Network__Proxy__OnlyForTorrents: false
               # Settings > Speed > When.
               QBT_Preferences__Scheduler__days: EveryDay
