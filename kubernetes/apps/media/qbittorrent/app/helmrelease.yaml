@@ -148,6 +148,21 @@ spec:
                 memory: 25Mi
               limits:
                 memory: 50Mi
+          gluetun:
+            image:
+              repository: ghcr.io/qdm12/gluetun
+              tag: v3.38.0@sha256:bdae21ec9b49d9bc02c84210c33c6934e14f21cc378a421c561539dafdf5f901
+            env:
+              TZ: ${TIMEZONE}
+              VPN_SERVICE_PROVIDER: custom
+              VPN_TYPE: wireguard
+              VPN_INTERFACE: wg0
+              FIREWALL_INPUT_PORTS: *port
+              FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR} # Allow access to k8s subnets
+            envFrom: qbittorrent-secret
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities: { add: ["NET_ADMIN"] }
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
