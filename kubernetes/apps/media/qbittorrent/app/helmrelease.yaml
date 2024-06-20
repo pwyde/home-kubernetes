@@ -124,6 +124,9 @@ spec:
               startup:
                 enabled: false
             securityContext:
+              runAsNonRoot: true
+              runAsUser: 1000
+              runAsGroup: 4000
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
@@ -165,15 +168,15 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               capabilities: { add: ["NET_ADMIN"] }
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 4000
-        fsGroup: 4000
-        fsGroupChangePolicy: OnRootMismatch
-        supplementalGroups: [10000]
-        seccompProfile: { type: RuntimeDefault }
+    # defaultPodOptions:
+    #   securityContext:
+    #     runAsNonRoot: true
+    #     runAsUser: 1000
+    #     runAsGroup: 4000
+    #     fsGroup: 4000
+    #     fsGroupChangePolicy: OnRootMismatch
+    #     supplementalGroups: [10000]
+    #     seccompProfile: { type: RuntimeDefault }
     service:
       app:
         controller: qbittorrent
