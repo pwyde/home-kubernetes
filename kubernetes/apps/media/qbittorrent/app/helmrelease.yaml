@@ -159,7 +159,9 @@ spec:
               VPN_INTERFACE: wg0
               FIREWALL_INPUT_PORTS: *port
               FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR} # Allow access to k8s subnets
-            envFrom: qbittorrent-secret
+            envFrom: &envFrom
+              - secretRef:
+                  name: qbittorrent-secret
             securityContext:
               allowPrivilegeEscalation: false
               capabilities: { add: ["NET_ADMIN"] }
