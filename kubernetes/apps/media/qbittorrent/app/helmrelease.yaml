@@ -157,8 +157,8 @@ spec:
               VPN_SERVICE_PROVIDER: custom
               VPN_TYPE: wireguard
               VPN_INTERFACE: wg0
-              FIREWALL_INPUT_PORTS: *port
-              FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR} # Allow access to k8s subnets
+              # FIREWALL_INPUT_PORTS: *port
+              # FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR} # Allow access to K8s subnets.
             envFrom: &envFrom
               - secretRef:
                   name: qbittorrent-secret
