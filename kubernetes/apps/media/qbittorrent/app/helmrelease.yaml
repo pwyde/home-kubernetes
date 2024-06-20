@@ -190,7 +190,7 @@ spec:
         existingClaim: config-qbittorrent
       config-categories:
         type: secret
-        name: qbittorrent-categories
+        name: qbittorrent-secret
         globalMounts:
           - path: /config/qBittorrent/categories.json
             subPath: categories.json

@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
-  - ./qbittorrent-categories.sops.yaml
+  - ./qbittorrent-secret.sops.yaml
 
