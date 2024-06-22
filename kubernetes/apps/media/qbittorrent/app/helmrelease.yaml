@@ -64,13 +64,13 @@ spec:
               # Settings > BitTorrent > Speed Limits > When ratio reaches.
               QBT_BitTorrent__Session__GlobalMaxRatio: 10
               # Settings > Advanced > Networking > Network interface.
-              QBT_BitTorrent__Session__Interface: eth0
-              # Settings > Advanced > Networking > Optional IP address to bind to.
-              QBT_BitTorrent__Session__InterfaceAddress:
-                valueFrom:
-                  fieldRef:
-                    fieldPath: status.podIP
-              QBT_BitTorrent__Session__InterfaceName: eth0
+              # QBT_BitTorrent__Session__Interface: eth0
+              # # Settings > Advanced > Networking > Optional IP address to bind to.
+              # QBT_BitTorrent__Session__InterfaceAddress:
+              #   valueFrom:
+              #     fieldRef:
+              #       fieldPath: status.podIP
+              # QBT_BitTorrent__Session__InterfaceName: eth0
               # Settings > BitTorrent > Privacy > Enable Local Peer Discovery to find more peers.
               QBT_BitTorrent__Session__LSDEnabled: false
               # Settings > BitTorrent > Torrent Queueing > Maximum active downloads.
@@ -108,21 +108,21 @@ spec:
               QBT_Preferences__WebUI__AlternativeUIEnabled: true
               # Settings > WebUI > Use Alternative WebUI.
               QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
-            probes:
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /api/v2/app/version
-                    port: *port
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *probes
-              startup:
-                enabled: false
+            # probes:
+            #   liveness: &probes
+            #     enabled: true
+            #     custom: true
+            #     spec:
+            #       httpGet:
+            #         path: /api/v2/app/version
+            #         port: *port
+            #       initialDelaySeconds: 0
+            #       periodSeconds: 10
+            #       timeoutSeconds: 1
+            #       failureThreshold: 3
+            #   readiness: *probes
+            #   startup:
+            #     enabled: false
             securityContext:
               runAsNonRoot: true
               runAsUser: 1000
