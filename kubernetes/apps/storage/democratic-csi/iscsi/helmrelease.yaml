@@ -24,6 +24,17 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    # See https://github.com/democratic-csi/democratic-csi#talos
+    node:
+      hostPID: true
+      driver:
+        extraEnv:
+          - name: ISCSIADM_HOST_STRATEGY
+            value: nsenter
+          - name: ISCSIADM_HOST_PATH
+            value: /usr/local/sbin/iscsiadm
+        iscsiDirHostPath: /usr/local/etc/iscsi
+        iscsiDirHostPathType: ""
     csiDriver:
       # Should be globally unique for a given cluster.
       name: "org.democratic-csi.iscsi"
