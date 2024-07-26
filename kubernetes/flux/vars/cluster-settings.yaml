@@ -5,4 +5,17 @@ metadata:
   name: cluster-settings
   namespace: flux-system
 data:
-  SETTING_EXAMPLE: Global settings for your cluster go in this file, this file is NOT encrypted
+  TIMEZONE: "Europe/Stockholm"
+  CLUSTER_CIDR: "10.69.0.0/16"
+  SERVICE_CIDR: "10.96.0.0/16"
+  NODE_CIDR: "192.168.20.0/24"
+  K8S_1_IP: "192.168.20.21"
+  K8S_2_IP: "192.168.20.22"
+  K8S_3_IP: "192.168.20.23"
+  K8S_4_IP: "192.168.20.24"
+  K8S_5_IP: "192.168.20.25"
+  SVC_INGRESS_IP_INTERNAL: "192.168.20.40"
+  SVC_INGRESS_IP_EXTERNAL: "192.168.20.45"
+  SVC_IP_NGINX_INTERNAL: "192.168.20.40"
+  SVC_IP_NGINX_EXTERNAL: "192.168.20.45"
+  SVC_IP_POSTGRES: "192.168.20.50"
