@@ -1,0 +1,91 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app portainer
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: democratic-csi-iscsi
+      namespace: storage
+  values:
+    controllers:
+      portainer:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          portainer:
+            image:
+              repository: docker.io/portainer/portainer-ce
+              tag: 2.20.3-alpine@sha256:4f6f585b813dc72e84f0780b2fca6531bdb1d12f3c67e95056e2e159fb0d384a
+            args:
+              - --admin-password-file
+              - /tmp/admin
+            env:
+              TZ: ${TIMEZONE}
+              ANONYMOUS_USAGE: 0
+            envFrom:
+              - secretRef:
+                  name: portainer-secret
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64M
+              limits:
+                memory: 256M
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: 9000
+    serviceAccount:
+      create: true
+      name: *app
+    ingress:
+      app:
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host portainer-k8s.${SECRET_DOMAIN}
+        className: internal
+        hosts:
+          - host: *host
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    persistence:
+      data:
+        existingClaim: data-portainer
+        globalMounts:
+          - path: /data
+      admin:
+        enabled: true
+        type: secret
+        name: portainer-secret
+        globalMounts:
+          - path: /tmp/admin
+            subPath: ADMIN_PASSWORD
+            readOnly: true
