@@ -1,0 +1,192 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+spec:
+  interval: 30h
+  timeout: 15m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 61.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    crds: Skip
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: Skip
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  dependsOn:
+    - name: prometheus-operator-crds
+      namespace: observability
+    - name: democratic-csi-iscsi
+      namespace: storage
+  valuesFrom:
+  - kind: ConfigMap
+    name: flux-kube-state-metrics-config
+    valuesKey: kube-state-metrics.yaml
+  values:
+    crds:
+      enabled: false
+    cleanPrometheusOperatorObjectNames: true
+    alertmanager:
+      ingress:
+        enabled: true
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host alertmanager.${SECRET_DOMAIN}
+        ingressClassName: internal
+        pathType: Prefix
+        hosts:
+          - *host
+        tls:
+          - hosts:
+              - *host
+      alertmanagerSpec:
+        # Alertmanager configuration is provided as a secret.
+        useExistingSecret: true
+        # The configuration secret is exported to /etc/alertmanager/config_out/alertmanager.env.yaml
+        # using Kustomize secretGenerator.
+        configSecret: alertmanager-config
+        # Mount secret into /etc/alertmanager/secrets/alertmanager-secret.
+        secrets:
+          - alertmanager-secret
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 60m
+            memory: 64Mi
+        storage:
+          volumeClaimTemplate:
+            metadata:
+              name: data
+            spec:
+              storageClassName: truenas-ssd-iscsi
+              resources:
+                requests:
+                  storage: 1Gi
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          # Drop high cardinality labels.
+          - action: labeldrop
+            regex: (uid)
+          - action: labeldrop
+            regex: (id|name)
+          - action: drop
+            sourceLabels: ["__name__"]
+            regex: (rest_client_request_duration_seconds_bucket|rest_client_request_duration_seconds_sum|rest_client_request_duration_seconds_count)
+    kubeApiServer:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          # Drop high cardinality labels.
+          - action: drop
+            sourceLabels: ["__name__"]
+            regex: (apiserver|etcd|rest_client)_request(|_sli|_slo)_duration_seconds_bucket
+          - action: drop
+            sourceLabels: ["__name__"]
+            regex: (apiserver_response_sizes_bucket|apiserver_watch_events_sizes_bucket)
+    kubeControllerManager:
+      enabled: true
+      endpoints: &endpoints
+        - ${K8S_1_IP}
+        - ${K8S_2_IP}
+        - ${K8S_3_IP}
+    kubeEtcd:
+      enabled: true
+      endpoints: *endpoints
+    kubeScheduler:
+      enabled: true
+      endpoints: *endpoints
+    kubeProxy:
+      enabled: false
+    kubeStateMetrics:
+      enabled: true
+    kube-state-metrics:
+      fullnameOverride: kube-state-metrics
+      metricLabelsAllowlist:
+        - pods=[*]
+        - deployments=[*]
+        - persistentvolumeclaims=[*]
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels: ["__meta_kubernetes_pod_node_name"]
+              targetLabel: kubernetes_node
+    nodeExporter:
+      enabled: true
+    prometheus-node-exporter:
+      fullnameOverride: node-exporter
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels: ["__meta_kubernetes_pod_node_name"]
+              targetLabel: kubernetes_node
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host prometheus.${SECRET_DOMAIN}
+        ingressClassName: internal
+        pathType: Prefix
+        hosts:
+          - *host
+        tls:
+          - hosts:
+              - *host
+      prometheusSpec:
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart.
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
+        enableAdminAPI: true
+        walCompression: true
+        enableFeatures:
+          - auto-gomemlimit
+          # https://prometheus.io/docs/prometheus/latest/feature_flags/
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
+        retention: 14d
+        retentionSize: 80GB
+        resources:
+          requests:
+            cpu: 300m
+            # memory: 1500Mi
+          limits:
+            # cpu: 350m
+            memory: 1500Mi
+        storageSpec:
+          volumeClaimTemplate:
+            metadata:
+              name: data
+            spec:
+              storageClassName: truenas-ssd-iscsi
+              resources:
+                requests:
+                  storage: 100Gi
+    grafana:
+      enabled: false
+      forceDeployDashboards: true

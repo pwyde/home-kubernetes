@@ -1,0 +1,10 @@
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: smartctl-exporter-scrape
+spec:
+  staticConfigs:
+    - targets:
+        - pve.${SECRET_DOMAIN}:9633
+  metricsPath: /metrics
