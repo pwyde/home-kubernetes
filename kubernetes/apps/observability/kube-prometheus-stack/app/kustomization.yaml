@@ -5,7 +5,7 @@ resources:
   - ./alertmanager-secret.sops.yaml
   - ./helmrelease.yaml
   - ./prometheusrules
-  - ./scrapeconfigs
+  - ./scrapeconfig.yaml
 secretGenerator:
   - name: alertmanager-config
     files:
