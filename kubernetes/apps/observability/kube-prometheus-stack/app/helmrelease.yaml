@@ -4,7 +4,7 @@ kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
   annotations:
-    fluxcd.io/reconcileAt: "2024-07-29T16:45:00Z"
+    fluxcd.io/reconcileAt: "2024-07-29T16:48:00Z"
 spec:
   interval: 30h
   timeout: 15m
