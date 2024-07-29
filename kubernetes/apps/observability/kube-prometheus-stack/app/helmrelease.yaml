@@ -3,6 +3,8 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
+  annotations:
+    fluxcd.io/reconcileAt: "2024-07-29T16:45:00Z"
 spec:
   interval: 30h
   timeout: 15m
