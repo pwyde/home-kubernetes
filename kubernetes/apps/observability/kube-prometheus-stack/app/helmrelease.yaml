@@ -31,10 +31,10 @@ spec:
       namespace: observability
     - name: democratic-csi-iscsi
       namespace: storage
-  # valuesFrom:
-  # - kind: ConfigMap
-  #   name: flux-kube-state-metrics-config
-  #   valuesKey: kube-state-metrics.yaml
+  valuesFrom:
+  - kind: ConfigMap
+    name: flux-kube-state-metrics-config
+    valuesKey: kube-state-metrics.yaml
   values:
     crds:
       enabled: false
