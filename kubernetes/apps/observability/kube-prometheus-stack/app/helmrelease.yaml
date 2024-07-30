@@ -134,11 +134,6 @@ spec:
               targetLabel: kubernetes_node
     nodeExporter:
       enabled: true
-      operatingSystems:
-        linux:
-          enabled: true
-        darwin:
-          enabled: false
     prometheus-node-exporter:
       fullnameOverride: node-exporter
       prometheus:
