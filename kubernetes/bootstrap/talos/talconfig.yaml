@@ -52,6 +52,10 @@ nodes:
           - network: 10.0.100.0/24
             gateway: "10.0.100.1"
         mtu: 1500
+    schematic:
+      customization:
+        extraKernelArgs:
+          - net.ifnames=0
   - hostname: "k8s-2"
     ipAddress: "192.168.20.22"
     installDisk: "/dev/sda"
@@ -78,6 +82,10 @@ nodes:
           - network: 10.0.100.0/24
             gateway: "10.0.100.1"
         mtu: 1500
+    schematic:
+      customization:
+        extraKernelArgs:
+          - net.ifnames=0
   - hostname: "k8s-3"
     ipAddress: "192.168.20.23"
     installDisk: "/dev/sda"
@@ -104,6 +112,10 @@ nodes:
           - network: 10.0.100.0/24
             gateway: "10.0.100.1"
         mtu: 1500
+    schematic:
+      customization:
+        extraKernelArgs:
+          - net.ifnames=0
   - hostname: "k8s-4"
     ipAddress: "192.168.20.24"
     installDisk: "/dev/sda"
@@ -128,6 +140,10 @@ nodes:
           - network: 10.0.100.0/24
             gateway: "10.0.100.1"
         mtu: 1500
+    schematic:
+      customization:
+        extraKernelArgs:
+          - net.ifnames=0
   - hostname: "k8s-5"
     ipAddress: "192.168.20.25"
     installDisk: "/dev/sda"
@@ -152,6 +168,10 @@ nodes:
           - network: 10.0.100.0/24
             gateway: "10.0.100.1"
         mtu: 1500
+    schematic:
+      customization:
+        extraKernelArgs:
+          - net.ifnames=0
 
 # Global patches
 patches:
