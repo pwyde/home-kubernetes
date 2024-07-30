@@ -192,3 +192,8 @@ spec:
     grafana:
       enabled: false
       forceDeployDashboards: true
+      defaultDashboardsTimezone: browser
+      sidecar:
+        dashboards:
+          annotations:
+            grafana_folder: Kubernetes
