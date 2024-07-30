@@ -154,9 +154,9 @@ spec:
             # https://github.com/democratic-csi/democratic-csi/issues/302
             # NOTE: the ID in the TrueNAS UI does NOT always match the ID in the DB,
             # you must use the DB value.
-            - targetGroupPortalGroup: 1
+            - targetGroupPortalGroup: 2
               # Get the correct ID from the "Initiators" section in the TrueNAS UI.
-              targetGroupInitiatorGroup: 1
+              targetGroupInitiatorGroup: 4
               # None, CHAP, or CHAP Mutual.
               targetGroupAuthType: None
               # Get the correct ID from the "Authorized Access" section of the TrueNAS UI.
