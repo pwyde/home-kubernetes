@@ -13,12 +13,6 @@ cni:
   exclusive: false
 # NOTE: devices might need to be set if you have more than one active NIC on your hosts
 # devices: eno+ eth+
-devices:
-  - enxbc2411458507
-  - enxbc2411619abd
-  - enxbc241117181c
-  - enxbc24116bdee7
-  - enxbc2411f31657
 endpointRoutes:
   enabled: true
 envoy:
