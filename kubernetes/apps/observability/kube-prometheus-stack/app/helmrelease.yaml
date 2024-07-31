@@ -162,18 +162,18 @@ spec:
         - ${K8S_1_IP}
         - ${K8S_2_IP}
         - ${K8S_3_IP}
-      # serviceMonitor: &sm
-      #   metricRelabelings:
-      #     - action: drop
-      #       sourceLabels: ["__name__"]
-      #       regex: workqueue_(work|queue)_duration_seconds_bucket
+      serviceMonitor: &sm
+        metricRelabelings:
+          - action: drop
+            sourceLabels: ["__name__"]
+            regex: workqueue_(work|queue)_duration_seconds_bucket
     kubeEtcd:
       enabled: true
       endpoints: *cp
     kubeScheduler:
       enabled: true
       endpoints: *cp
-      # serviceMonitor: *sm
+      serviceMonitor: *sm
     kubeProxy:
       enabled: false
     kubeStateMetrics:
