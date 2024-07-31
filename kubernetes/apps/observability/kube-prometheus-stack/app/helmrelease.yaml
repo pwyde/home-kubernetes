@@ -208,7 +208,7 @@ spec:
           - hosts:
               - *host
       prometheusSpec:
-        scrapeInterval: 30s # Must match interval in Grafana Helm chart.
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart.
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
