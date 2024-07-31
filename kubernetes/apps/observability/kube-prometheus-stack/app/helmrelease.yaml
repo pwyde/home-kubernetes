@@ -111,10 +111,10 @@ spec:
         #   # Drop high-cardinality labels.
         #   - action: labeldrop
         #     regex: (uid|id|name|pod_uid|interface)
-        # probesMetricRelabelings:
-        #   - action: drop
-        #     sourceLabels: ["__name__"]
-        #     regex: prober_probe_duration_seconds_bucket
+        probesMetricRelabelings:
+          - action: drop
+            sourceLabels: ["__name__"]
+            regex: prober_probe_duration_seconds_bucket
         metricRelabelings:
           # Drop high-cardinality labels.
           - action: labeldrop
