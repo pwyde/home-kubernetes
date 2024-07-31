@@ -134,28 +134,20 @@ spec:
     kubeApiServer:
       enabled: true
       serviceMonitor:
-        # metricRelabelings:
-        #   # Drop high-cardinality labels.
-        #   - action: drop
-        #     sourceLabels: ["__name__"]
-        #     regex: (apiserver|etcd|rest_client)_request(|_sli|_slo)_duration_seconds_bucket
-        #   - action: drop
-        #     sourceLabels: ["__name__"]
-        #     regex: apiserver_(response|watch_events)_sizes_bucket
-        #   - action: drop
-        #     sourceLabels: ["__name__"]
-        #     regex: apiserver_request_body_size_bytes_bucket
-        #   - action: drop
-        #     sourceLabels: ["__name__"]
-        #     regex: workqueue_(work|queue)_duration_seconds_bucket
         metricRelabelings:
-          # Drop high cardinality labels
+          # Drop high-cardinality labels.
           - action: drop
             sourceLabels: ["__name__"]
             regex: (apiserver|etcd|rest_client)_request(|_sli|_slo)_duration_seconds_bucket
           - action: drop
             sourceLabels: ["__name__"]
-            regex: (apiserver_response_sizes_bucket|apiserver_watch_events_sizes_bucket)
+            regex: apiserver_(response|watch_events)_sizes_bucket
+          - action: drop
+            sourceLabels: ["__name__"]
+            regex: apiserver_request_body_size_bytes_bucket
+          - action: drop
+            sourceLabels: ["__name__"]
+            regex: workqueue_(work|queue)_duration_seconds_bucket
     kubeControllerManager:
       enabled: true
       endpoints: &cp
