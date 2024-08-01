@@ -85,7 +85,7 @@ spec:
       serviceMonitor:
         enabled: true
         metricsInstance:
-          enabled: false
+          enabled: true
       selfMonitoring:
         enabled: true
         grafanaAgent:
