@@ -108,9 +108,9 @@ spec:
         #   - sourceLabels: [id, pod]
         #     action: drop
         #     regex: ".+;"
-        #   # Drop high-cardinality labels.
-        #   - action: labeldrop
-        #     regex: (uid|id|name|pod_uid|interface)
+          # Drop high-cardinality labels.
+          - action: labeldrop
+            regex: (uid|id|name|pod_uid|interface)
         probesMetricRelabelings:
           - action: drop
             sourceLabels: ["__name__"]
