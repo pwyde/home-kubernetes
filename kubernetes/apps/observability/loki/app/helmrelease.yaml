@@ -79,6 +79,7 @@ spec:
               - *host
     monitoring:
       dashboards:
+        enabled: true
         annotations:
           grafana_folder: Loki
     backend:
