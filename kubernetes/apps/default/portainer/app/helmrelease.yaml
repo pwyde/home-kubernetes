@@ -36,7 +36,7 @@ spec:
           portainer:
             image:
               repository: docker.io/portainer/portainer-ce
-              tag: 2.20.3-alpine@sha256:4f6f585b813dc72e84f0780b2fca6531bdb1d12f3c67e95056e2e159fb0d384a
+              tag: 2.20.3-alpine@sha256:a6f635877e0daa4aa39c1cbf4e73a31b35d342284588fa72fd8a91efb3c6a091
             args:
               - --admin-password-file
               - /tmp/admin
