@@ -82,6 +82,10 @@ spec:
         enabled: true
         annotations:
           grafana_folder: Loki
+      serviceMonitor:
+        enabled: true
+        metricsInstance:
+          enabled: false
     backend:
       replicas: 0
     read:
