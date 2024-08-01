@@ -79,11 +79,11 @@ spec:
     kubelet:
       enabled: true
       serviceMonitor:
-        # cAdvisorMetricRelabelings:
-        #   # Drop less useful container CPU metrics.
-        #   - sourceLabels: [__name__]
-        #     action: drop
-        #     regex: "container_cpu_(cfs_throttled_seconds_total|load_average_10s|system_seconds_total|user_seconds_total)"
+        cAdvisorMetricRelabelings:
+          # Drop less useful container CPU metrics.
+          - sourceLabels: [__name__]
+            action: drop
+            regex: "container_cpu_(cfs_throttled_seconds_total|load_average_10s|system_seconds_total|user_seconds_total)"
         #   # Drop less useful / always zero container memory metrics.
         #   - sourceLabels: [__name__]
         #     action: drop
