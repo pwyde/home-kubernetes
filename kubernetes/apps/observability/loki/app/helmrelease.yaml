@@ -86,6 +86,10 @@ spec:
         enabled: true
         metricsInstance:
           enabled: false
+      selfMonitoring:
+        enabled: true
+        grafanaAgent:
+          installOperator: false
     backend:
       replicas: 0
     read:
