@@ -61,6 +61,7 @@ spec:
         storageClass: truenas-ssd-iscsi
         size: 50Gi
     gateway:
+      replicas: 1
       image:
         registry: ghcr.io
       ingress:
