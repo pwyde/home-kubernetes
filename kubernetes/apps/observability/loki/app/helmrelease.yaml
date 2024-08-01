@@ -77,19 +77,6 @@ spec:
         tls:
           - hosts:
               - *host
-    monitoring:
-      dashboards:
-        enabled: true
-        annotations:
-          grafana_folder: Loki
-      serviceMonitor:
-        enabled: true
-        metricsInstance:
-          enabled: true
-      selfMonitoring:
-        enabled: true
-        grafanaAgent:
-          installOperator: false
     backend:
       replicas: 0
     read:
