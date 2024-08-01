@@ -77,6 +77,10 @@ spec:
         tls:
           - hosts:
               - *host
+    monitoring:
+      dashboards:
+        annotations:
+          grafana_folder: Loki
     backend:
       replicas: 0
     read:
