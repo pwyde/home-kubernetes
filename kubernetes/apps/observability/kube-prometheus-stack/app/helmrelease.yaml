@@ -100,10 +100,10 @@ spec:
           - sourceLabels: [__name__]
             action: drop
             regex: "container_blkio_device_usage_total"
-        #   # Drop container spec metrics that overlap with kube-state-metrics.
-        #   - sourceLabels: [__name__]
-        #     action: drop
-        #     regex: "container_spec.*"
+          # Drop container spec metrics that overlap with kube-state-metrics.
+          - sourceLabels: [__name__]
+            action: drop
+            regex: "container_spec.*"
         #   # Drop cgroup metrics with no pod.
         #   - sourceLabels: [id, pod]
         #     action: drop
