@@ -30,7 +30,8 @@ spec:
     storageClasses:
       - name: truenas-ssd-nfs
         defaultClass: true
-        reclaimPolicy: Delete
+        # reclaimPolicy: Delete
+        reclaimPolicy: Retain
         volumeBindingMode: Immediate
         allowVolumeExpansion: true
         parameters:
