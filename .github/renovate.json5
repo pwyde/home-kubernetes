@@ -184,6 +184,13 @@
     {
       "matchManagers": ["github-actions"],
       "addLabels": ["renovate/github-action"]
+    },
+    // custom versioning
+    {
+      "description": ["Custom versioning for minio"],
+      "matchDatasources": ["docker"],
+      "matchPackagePatterns": ["minio"],
+      "versioning": "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z$"
     }
   ],
   // custom managers
