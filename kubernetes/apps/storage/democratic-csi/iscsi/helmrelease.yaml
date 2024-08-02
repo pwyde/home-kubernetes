@@ -41,7 +41,9 @@ spec:
     storageClasses:
       - name: truenas-ssd-iscsi
         defaultClass: false
-        reclaimPolicy: Delete
+        # reclaimPolicy: Delete
+        # Set to Retain so PVC will be left alone on delete.
+        reclaimPolicy: Retain
         volumeBindingMode: Immediate
         allowVolumeExpansion: true
         parameters:
