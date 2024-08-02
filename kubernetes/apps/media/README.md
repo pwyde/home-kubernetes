@@ -59,5 +59,6 @@ docker run --rm -v ${HOME}/logs.db:/logs.db:ro --network=host ghcr.io/roxedus/pg
 
 Re-deploy Radarr in the Kubernetes cluster.
 
-*Ref:*
-[Main migration article from Servarr Wiki](https://wiki.servarr.com/radarr/postgres-setup)
+### References
+- [Main migration article from Servarr Wiki](https://wiki.servarr.com/radarr/postgres-setup)
+- [Migrate Radarr from SQLite to Postgres](https://gist.github.com/tobz/929fd4ad8da80ac2ce524af73d4ea615)
