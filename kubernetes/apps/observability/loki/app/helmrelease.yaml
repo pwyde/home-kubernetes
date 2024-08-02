@@ -64,6 +64,10 @@ spec:
       replicas: 1
       image:
         registry: ghcr.io
+      service:
+        type: LoadBalancer
+        annotations:
+          io.cilium/lb-ipam-ips: ${SVC_IP_LOKI}
       ingress:
         enabled: true
         annotations:
