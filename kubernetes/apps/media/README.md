@@ -4,10 +4,10 @@
 
 This guide will use **Radarr** as an example. Same procedure can be applied to all the **Arr** applications.
 
-- **Radarr**
-- **Sonarr**
 - **Lidarr**
 - **Prowlarr**
+- **Radarr**
+- **Sonarr**
 
 Upgrade **Radarr** to at least `v4.1.0.6133` or newer. This brings in support for **PostgreSQL**. This will also ensure that all of the **SQLite** tables have the latest schema migrations applied before migration to the PostgreSQL cluster.
 
