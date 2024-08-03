@@ -2,7 +2,7 @@ LogLevel = 'info'
 
 DataFolder = '/data'
 CacheFolder = '/data/cache'
-MusicFolder = '/music/Library/Music'
+MusicFolder = '/mnt/media/Library/Music'
 
 AutoImportPlaylists = false
 
