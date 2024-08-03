@@ -1,0 +1,116 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app navidrome
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 3.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      navidrome:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          navidrome:
+            image:
+              repository: ghcr.io/navidrome/navidrome
+              tag: 0.52.5@sha256:4d42b180d99bfe95e1c058413e504b287559afac7b496606d27e4a89c187c339
+            env:
+              TZ: ${TIMEZONE}
+              ND_LOGLEVEL: info
+              ND_CONFIGFILE: /config/navidrome.toml
+              ND_DATAFOLDER: /data
+              ND_CACHEFOLDER: /data/cache
+              ND_MUSICFOLDER: /mnt/media/Library/Music
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: &port 4533
+                  initialDelaySeconds: 30
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            resources:
+              requests:
+                cpu: 100m
+                memory: 250M
+              limits:
+                memory: 500M
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: &uid 1000
+        runAsGroup: &gid 4000
+        fsGroup: *gid
+        fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups: [10000]
+        seccompProfile: { type: RuntimeDefault }
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *port
+    ingress:
+      app:
+        annotations:
+          external-dns.alpha.kubernetes.io/target: &host navidrome.${SECRET_DOMAIN}
+        className: internal
+        hosts:
+          - host: *host
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+    persistence:
+      config:
+        type: emptyDir
+      navidrome-config:
+        type: configMap
+        name: navidrome-config
+        globalMounts:
+          - path: /config/navidrome.toml
+            subPath: navidrome.toml
+            readOnly: true
+      data:
+        existingClaim: data-navidrome
+        globalMounts:
+          - path: /data
+      media:
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_PATH_MEDIA}
+        globalMounts:
+          - path: /mnt/media
+            readOnly: true
+
