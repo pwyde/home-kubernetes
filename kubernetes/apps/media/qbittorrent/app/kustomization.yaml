@@ -5,4 +5,12 @@ resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
   - ./qbittorrent-secret.sops.yaml
-
+configMapGenerator:
+  - name: qbittorrent-loki-rules
+    files:
+      - qbittorrent.yaml=./resources/lokirules.yaml
+    options:
+      labels:
+        loki_rule: "true"
+generatorOptions:
+  disableNameSuffixHash: true
