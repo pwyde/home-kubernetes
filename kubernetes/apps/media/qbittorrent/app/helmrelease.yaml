@@ -185,11 +185,11 @@ spec:
         ports:
           http:
             port: *port
-          bittorrent:
-            enabled: true
-            port: *bittorrentPort
-            protocol: TCP
-            targetPort: *bittorrentPort
+          # bittorrent:
+          #   enabled: true
+          #   port: *bittorrentPort
+          #   protocol: TCP
+          #   targetPort: *bittorrentPort
     ingress:
       app:
         annotations:
