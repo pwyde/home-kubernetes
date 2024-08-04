@@ -176,6 +176,19 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               capabilities: { add: ["NET_ADMIN"] }
+            probes:
+              liveness: &probe
+                enabled: true
+                custom: true
+                spec:
+                  exec: &exec
+                    command: [/gluetun-entrypoint, healthcheck]
+                  periodSeconds: 60
+              startup:
+                <<: *probe
+                spec:
+                  exec: *exec
+                  periodSeconds: 5
     service:
       app:
         controller: *app
