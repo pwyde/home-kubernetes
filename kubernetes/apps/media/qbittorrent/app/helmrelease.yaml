@@ -220,6 +220,8 @@ spec:
           - hosts:
               - *host
     persistence:
+      addons:
+        type: emptyDir
       config:
         existingClaim: config-qbittorrent
       config-categories:
@@ -229,10 +231,6 @@ spec:
           - path: /config/qBittorrent/categories.json
             subPath: categories.json
             readOnly: true
-      addons:
-        type: emptyDir
-        globalMounts:
-          - path: /addons
       media:
         type: nfs
         server: ${TRUENAS_IP}

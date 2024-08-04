@@ -63,7 +63,7 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
-            securityContext:
+            securityContext: &securityContext
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
@@ -72,6 +72,21 @@ spec:
                 cpu: 10m
               limits:
                 memory: 1Gi
+          subcleaner:
+            image:
+              repository: registry.k8s.io/git-sync/git-sync
+              tag: v4.2.3@sha256:19cc7c317d125c5737ecb9a9159d00b5d97f39c45225c6483de365d62fc09fa8
+            env:
+              GITSYNC_REPO: https://github.com/KBlixt/subcleaner
+              GITSYNC_REF: master
+              GITSYNC_PERIOD: 24h
+              GITSYNC_ROOT: /addons
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 128Mi
+            securityContext: *securityContext
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
@@ -103,6 +118,8 @@ spec:
           - hosts:
               - *host
     persistence:
+      addons:
+        type: emptyDir
       config:
         existingClaim: config-bazarr
       media:
