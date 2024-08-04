@@ -41,7 +41,7 @@ spec:
               TZ: ${TIMEZONE}
               UMASK: 002
               QBITTORRENT__PORT: &port 80
-              QBITTORRENT__BT_PORT: 60113
+              QBITTORRENT__BT_PORT: &bittorrentPort 60112
               # Settings based on https://trash-guides.info/Downloaders/qBittorrent/.
               # Settings > Advanced > Physical memory (RAM) usage limit (libtorrent >=2.0).
               QBT_Application__MemoryWorkingSetLimit: 10000
@@ -168,7 +168,7 @@ spec:
               VPN_TYPE: wireguard
               VPN_INTERFACE: wg0
               FIREWALL_INPUT_PORTS: *port
-              FIREWALL_VPN_INPUT_PORTS: 60112
+              FIREWALL_VPN_INPUT_PORTS: *bittorrentPort
               FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR} # Allow access to K8s subnets.
             envFrom: &envFrom
               - secretRef:
