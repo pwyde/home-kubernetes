@@ -111,21 +111,24 @@ spec:
               QBT_Preferences__WebUI__AlternativeUIEnabled: true
               # Settings > WebUI > Use Alternative WebUI.
               QBT_Preferences__WebUI__RootFolder: /addons/VueTorrent
-            # probes:
-            #   liveness: &probes
-            #     enabled: true
-            #     custom: true
-            #     spec:
-            #       httpGet:
-            #         path: /api/v2/app/version
-            #         port: *port
-            #       initialDelaySeconds: 30
-            #       periodSeconds: 30
-            #       timeoutSeconds: 10
-            #       failureThreshold: 5
-            #   readiness: *probes
-            #   startup:
-            #     enabled: false
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/v2/app/version
+                    port: *port
+                  initialDelaySeconds: 30
+                  periodSeconds: 30
+                  timeoutSeconds: 10
+                  failureThreshold: 5
+              readiness: *probes
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 10
             securityContext:
               runAsNonRoot: true
               runAsUser: 1000
