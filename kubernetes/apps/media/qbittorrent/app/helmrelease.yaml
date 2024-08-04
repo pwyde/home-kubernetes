@@ -67,13 +67,13 @@ spec:
               # Settings > BitTorrent > Speed Limits > When ratio reaches.
               QBT_BitTorrent__Session__GlobalMaxRatio: 10
               # Settings > Advanced > Networking > Network interface.
-              # QBT_BitTorrent__Session__Interface: eth0
+              QBT_BitTorrent__Session__Interface: wg0
               # # Settings > Advanced > Networking > Optional IP address to bind to.
-              # QBT_BitTorrent__Session__InterfaceAddress:
-              #   valueFrom:
-              #     fieldRef:
-              #       fieldPath: status.podIP
-              # QBT_BitTorrent__Session__InterfaceName: eth0
+              QBT_BitTorrent__Session__InterfaceAddress:
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.podIP
+              QBT_BitTorrent__Session__InterfaceName: wg0
               # Settings > BitTorrent > Privacy > Enable Local Peer Discovery to find more peers.
               QBT_BitTorrent__Session__LSDEnabled: false
               # Settings > BitTorrent > Torrent Queueing > Maximum active downloads.
@@ -171,18 +171,9 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               capabilities: { add: ["NET_ADMIN"] }
-    # defaultPodOptions:
-    #   securityContext:
-    #     runAsNonRoot: true
-    #     runAsUser: 1000
-    #     runAsGroup: 4000
-    #     fsGroup: 4000
-    #     fsGroupChangePolicy: OnRootMismatch
-    #     supplementalGroups: [10000]
-    #     seccompProfile: { type: RuntimeDefault }
     service:
       app:
-        controller: qbittorrent
+        controller: *app
         type: LoadBalancer
         annotations:
           io.cilium/lb-ipam-ips: ${SVC_IP_QBITTORRENT}
@@ -193,6 +184,7 @@ spec:
             enabled: true
             port: *bittorrentPort
             protocol: TCP
+            targetPort: *bittorrentPort
     ingress:
       app:
         annotations:
