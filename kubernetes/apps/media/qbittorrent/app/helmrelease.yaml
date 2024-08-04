@@ -39,6 +39,7 @@ spec:
               tag: 4.6.5@sha256:c019af23966ebafcaf1713d4553bc043246858b711a7d57d8bee358a89990a3e
             env:
               TZ: ${TIMEZONE}
+              UMASK: 002
               QBITTORRENT__PORT: &port 80
               QBITTORRENT__BT_PORT: &bittorrentPort 60112
               # Settings based on https://trash-guides.info/Downloaders/qBittorrent/.
@@ -67,13 +68,13 @@ spec:
               # Settings > BitTorrent > Speed Limits > When ratio reaches.
               QBT_BitTorrent__Session__GlobalMaxRatio: 10
               # Settings > Advanced > Networking > Network interface.
-              QBT_BitTorrent__Session__Interface: wg0
+              # QBT_BitTorrent__Session__Interface: eth0
               # # Settings > Advanced > Networking > Optional IP address to bind to.
-              QBT_BitTorrent__Session__InterfaceAddress:
-                valueFrom:
-                  fieldRef:
-                    fieldPath: status.podIP
-              QBT_BitTorrent__Session__InterfaceName: wg0
+              # QBT_BitTorrent__Session__InterfaceAddress:
+              #   valueFrom:
+              #     fieldRef:
+              #       fieldPath: status.podIP
+              # QBT_BitTorrent__Session__InterfaceName: eth0
               # Settings > BitTorrent > Privacy > Enable Local Peer Discovery to find more peers.
               QBT_BitTorrent__Session__LSDEnabled: false
               # Settings > BitTorrent > Torrent Queueing > Maximum active downloads.
@@ -167,6 +168,7 @@ spec:
               VPN_TYPE: wireguard
               VPN_INTERFACE: wg0
               FIREWALL_INPUT_PORTS: *port
+              FIREWALL_VPN_INPUT_PORTS: *bittorrentPort
               FIREWALL_OUTBOUND_SUBNETS: ${CLUSTER_CIDR},${SERVICE_CIDR} # Allow access to K8s subnets.
             envFrom: &envFrom
               - secretRef:
