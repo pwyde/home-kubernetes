@@ -128,3 +128,11 @@ spec:
         path: ${NFS_PATH_MEDIA}
         globalMounts:
           - path: /data
+      scripts:
+        type: configMap
+        name: bazarr-scripts
+        defaultMode: 0775
+        globalMounts:
+          - readOnly: true
+      tmp:
+        type: emptyDir
