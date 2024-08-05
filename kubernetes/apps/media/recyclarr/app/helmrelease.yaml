@@ -34,8 +34,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         cronjob:
-          # schedule: "@daily"
-          schedule: "*/5 * * * *"
+          schedule: "@daily"
           successfulJobsHistory: 1
           failedJobsHistory: 1
         containers:
