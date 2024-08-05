@@ -98,10 +98,6 @@ spec:
           - hosts:
               - *host
     persistence:
-      data:
-        existingClaim: data-pgadmin
-        globalMounts:
-          - path: /var/lib/pgadmin
       config:
         type: configMap
         name: pgadmin-config
@@ -109,3 +105,8 @@ spec:
           - path: /pgadmin4/servers.json
             subPath: servers.json
             readOnly: true
+      data:
+        existingClaim: pgadmin-data
+        globalMounts:
+          - path: /var/lib/pgadmin
+

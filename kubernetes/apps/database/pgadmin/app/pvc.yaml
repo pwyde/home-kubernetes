@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: data-pgadmin
+  name: pgadmin-data
   namespace: database
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-iscsi"
