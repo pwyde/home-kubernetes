@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: data-portainer
+  name: portainer-data
   namespace: portainer
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-iscsi"

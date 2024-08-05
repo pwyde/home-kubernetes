@@ -77,10 +77,6 @@ spec:
           - hosts:
               - *host
     persistence:
-      data:
-        existingClaim: data-portainer
-        globalMounts:
-          - path: /data
       admin:
         enabled: true
         type: secret
@@ -89,3 +85,7 @@ spec:
           - path: /tmp/admin
             subPath: ADMIN_PASSWORD
             readOnly: true
+      data:
+        existingClaim: portainer-data
+        globalMounts:
+          - path: /data
