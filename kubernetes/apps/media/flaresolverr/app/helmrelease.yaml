@@ -62,15 +62,15 @@ spec:
                 memory: 100Mi
               limits:
                 memory: 300Mi
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: &uid 65534
-        runAsGroup: &gid 65534
-        fsGroup: *gid
-        fsGroupChangePolicy: OnRootMismatch
-        supplementalGroups: [10000]
-        seccompProfile: { type: RuntimeDefault }
+    # defaultPodOptions:
+    #   securityContext:
+    #     runAsNonRoot: true
+    #     runAsUser: &uid 65534
+    #     runAsGroup: &gid 65534
+    #     fsGroup: *gid
+    #     fsGroupChangePolicy: OnRootMismatch
+    #     supplementalGroups: [10000]
+    #     seccompProfile: { type: RuntimeDefault }
     service:
       app:
         controller: *app
