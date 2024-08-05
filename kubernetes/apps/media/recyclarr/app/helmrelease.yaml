@@ -30,13 +30,13 @@ spec:
   values:
     controllers:
       recyclarr:
-        # type: cronjob
-        # annotations:
-        #   reloader.stakater.com/auto: "true"
-        # cronjob:
-        #   schedule: "@daily"
-        #   successfulJobsHistory: 1
-        #   failedJobsHistory: 1
+        type: cronjob
+        annotations:
+          reloader.stakater.com/auto: "true"
+        cronjob:
+          schedule: "@daily"
+          successfulJobsHistory: 1
+          failedJobsHistory: 1
         containers:
           recyclarr:
             image:
@@ -68,10 +68,6 @@ spec:
     persistence:
       config:
         existingClaim: recyclarr-config
-        # advancedMounts:
-        #   recyclarr:
-        #     recyclarr:
-        #       - path: /config
       config-file:
         type: configMap
         name: recyclarr-config-file
@@ -79,7 +75,3 @@ spec:
           - path: /config/recyclarr.yml
             subPath: recyclarr.yml
             readOnly: true
-      # config-logs:
-      #   type: emptyDir
-      #   globalMounts:
-      #     - path: /config/logs
