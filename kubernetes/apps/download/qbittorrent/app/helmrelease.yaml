@@ -223,7 +223,7 @@ spec:
       addons:
         type: emptyDir
       config:
-        existingClaim: config-qbittorrent
+        existingClaim: qbittorrent-config
       config-categories:
         type: secret
         name: qbittorrent-secret

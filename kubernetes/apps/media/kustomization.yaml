@@ -10,6 +10,5 @@ resources:
   - ./lidarr/ks.yaml
   - ./navidrome/ks.yaml
   - ./prowlarr/ks.yaml
-  # - ./qbittorrent/ks.yaml
   - ./radarr/ks.yaml
   - ./sonarr/ks.yaml

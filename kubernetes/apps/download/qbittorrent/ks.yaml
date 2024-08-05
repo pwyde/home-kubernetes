@@ -5,11 +5,11 @@ metadata:
   name: &app qbittorrent
   namespace: flux-system
 spec:
-  targetNamespace: media
+  targetNamespace: download
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/media/qbittorrent/app
+  path: ./kubernetes/apps/download/qbittorrent/app
   prune: true
   sourceRef:
     kind: GitRepository
