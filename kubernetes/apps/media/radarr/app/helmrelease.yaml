@@ -112,7 +112,13 @@ spec:
               - *host
     persistence:
       config:
-        existingClaim: config-radarr
+        existingClaim: radarr-config
+      media:
+        type: nfs
+        server: ${TRUENAS_IP}
+        path: ${NFS_PATH_MEDIA}
+        globalMounts:
+          - path: /data
       pushover-notify:
         type: configMap
         name: radarr-pushover-notify
@@ -123,9 +129,3 @@ spec:
             readOnly: true
       tmp:
         type: emptyDir
-      media:
-        type: nfs
-        server: ${TRUENAS_IP}
-        path: ${NFS_PATH_MEDIA}
-        globalMounts:
-          - path: /data

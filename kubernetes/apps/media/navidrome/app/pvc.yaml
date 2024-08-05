@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: data-navidrome
+  name: navidrome-data
   namespace: media
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-iscsi"

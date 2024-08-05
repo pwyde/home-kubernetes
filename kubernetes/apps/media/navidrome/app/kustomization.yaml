@@ -7,6 +7,6 @@ resources:
 configMapGenerator:
   - name: navidrome-config
     files:
-      - navidrome.toml=./config/navidrome.toml
+      - navidrome.toml=./resources/navidrome.toml
 generatorOptions:
   disableNameSuffixHash: true

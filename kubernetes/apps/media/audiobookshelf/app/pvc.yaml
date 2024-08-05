@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-audiobookshelf
+  name: audiobookshelf-config
   namespace: media
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: metadata-audiobookshelf
+  name: audiobookshelf-metadata
   namespace: media
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"

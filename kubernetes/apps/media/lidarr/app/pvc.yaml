@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: config-lidarr
+  name: lidarr-config
   namespace: media
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"

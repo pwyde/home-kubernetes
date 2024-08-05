@@ -121,18 +121,20 @@ spec:
       addons:
         type: emptyDir
       config:
-        existingClaim: config-bazarr
+        existingClaim: bazarr-config
       media:
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
         globalMounts:
           - path: /data
-      scripts:
+      subcleaner:
         type: configMap
-        name: bazarr-scripts
+        name: bazarr-subcleaner
         defaultMode: 0775
         globalMounts:
-          - readOnly: true
+          - path: /scripts/subcleaner.sh
+            subPath: subcleaner.sh
+            readOnly: true
       tmp:
         type: emptyDir

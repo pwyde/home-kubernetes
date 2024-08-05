@@ -98,15 +98,8 @@ spec:
     persistence:
       config:
         type: emptyDir
-      navidrome-config:
-        type: configMap
-        name: navidrome-config
-        globalMounts:
-          - path: /config/navidrome.toml
-            subPath: navidrome.toml
-            readOnly: true
       data:
-        existingClaim: data-navidrome
+        existingClaim: navidrome-data
         globalMounts:
           - path: /data
       media:
@@ -115,5 +108,12 @@ spec:
         path: ${NFS_PATH_MEDIA}
         globalMounts:
           - path: /mnt/media
+            readOnly: true
+      navidrome-config:
+        type: configMap
+        name: navidrome-config
+        globalMounts:
+          - path: /config/navidrome.toml
+            subPath: navidrome.toml
             readOnly: true
 

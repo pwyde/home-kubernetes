@@ -6,7 +6,7 @@ resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
 configMapGenerator:
-  - name: bazarr-scripts
+  - name: bazarr-subcleaner
     files:
       - subcleaner.sh=./resources/subcleaner.sh
 generatorOptions:

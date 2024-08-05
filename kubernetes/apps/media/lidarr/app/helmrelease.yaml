@@ -112,12 +112,12 @@ spec:
               - *host
     persistence:
       config:
-        existingClaim: config-lidarr
-      tmp:
-        type: emptyDir
+        existingClaim: lidarr-config
       media:
         type: nfs
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
         globalMounts:
           - path: /data
+      tmp:
+        type: emptyDir

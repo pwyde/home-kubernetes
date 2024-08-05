@@ -5,11 +5,11 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  # - ./audiobookshelf/ks.yaml
-  # - ./bazarr/ks.yaml
-  # - ./lidarr/ks.yaml
-  # - ./navidrome/ks.yaml
-  # - ./prowlarr/ks.yaml
+  - ./audiobookshelf/ks.yaml
+  - ./bazarr/ks.yaml
+  - ./lidarr/ks.yaml
+  - ./navidrome/ks.yaml
+  - ./prowlarr/ks.yaml
   # - ./qbittorrent/ks.yaml
-  # - ./radarr/ks.yaml
-  # - ./sonarr/ks.yaml
+  - ./radarr/ks.yaml
+  - ./sonarr/ks.yaml

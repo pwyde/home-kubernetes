@@ -97,18 +97,14 @@ spec:
           - hosts:
               - *host
     persistence:
-      config:
-        existingClaim: config-audiobookshelf
-        globalMounts:
-          - path: /config
-      metadata:
-        existingClaim: metadata-audiobookshelf
-        globalMounts:
-          - path: /metadata
       cache:
         type: emptyDir
         globalMounts:
           - path: /.npm
+      config:
+        existingClaim: audiobookshelf-config
+        globalMounts:
+          - path: /config
       media:
         type: nfs
         server: ${TRUENAS_IP}
@@ -116,4 +112,7 @@ spec:
         globalMounts:
           - path: /data
             readOnly: true
-
+      metadata:
+        existingClaim: audiobookshelf-metadata
+        globalMounts:
+          - path: /metadata
