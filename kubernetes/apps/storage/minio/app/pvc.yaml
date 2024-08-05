@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: data-minio
+  name: minio-data
   namespace: storage
   annotations:
     volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"

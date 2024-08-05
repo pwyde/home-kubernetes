@@ -122,6 +122,6 @@ spec:
               - *s3host
     persistence:
       data:
-        existingClaim: data-minio
+        existingClaim: minio-data
         globalMounts:
           - path: /data
