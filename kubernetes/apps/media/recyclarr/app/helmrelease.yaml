@@ -68,10 +68,10 @@ spec:
     persistence:
       config:
         existingClaim: recyclarr-config
-        advancedMounts:
-          recyclarr:
-            recyclarr:
-              - path: /config
+        # advancedMounts:
+        #   recyclarr:
+        #     recyclarr:
+        #       - path: /config
       config-file:
         type: configMap
         name: recyclarr-config-file
@@ -79,7 +79,7 @@ spec:
           - path: /config/recyclarr.yml
             subPath: recyclarr.yml
             readOnly: true
-      config-logs:
-        type: emptyDir
-        globalMounts:
-          - path: /config/logs
+      # config-logs:
+      #   type: emptyDir
+      #   globalMounts:
+      #     - path: /config/logs
