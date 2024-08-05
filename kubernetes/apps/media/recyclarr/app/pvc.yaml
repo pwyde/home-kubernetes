@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: recyclarr-config
+  namespace: media
+  annotations:
+    volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"
+spec:
+  storageClassName: truenas-ssd-nfs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
