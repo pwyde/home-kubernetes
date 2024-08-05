@@ -30,13 +30,13 @@ spec:
   values:
     controllers:
       recyclarr:
-        type: cronjob
-        annotations:
-          reloader.stakater.com/auto: "true"
-        cronjob:
-          schedule: "@daily"
-          successfulJobsHistory: 1
-          failedJobsHistory: 1
+        # type: cronjob
+        # annotations:
+        #   reloader.stakater.com/auto: "true"
+        # cronjob:
+        #   schedule: "@daily"
+        #   successfulJobsHistory: 1
+        #   failedJobsHistory: 1
         containers:
           recyclarr:
             image:
