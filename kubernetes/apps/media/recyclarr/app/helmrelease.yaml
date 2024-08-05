@@ -68,6 +68,10 @@ spec:
     persistence:
       config:
         existingClaim: recyclarr-config
+        advancedMounts:
+          recyclarr:
+            recyclarr:
+              - path: /config
       config-file:
         type: configMap
         name: recyclarr-config-file
