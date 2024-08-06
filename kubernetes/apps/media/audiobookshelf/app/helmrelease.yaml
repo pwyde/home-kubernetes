@@ -98,6 +98,7 @@ spec:
               - *host
     persistence:
       cache:
+        type: emptyDir
         globalMounts:
           - path: /.npm
       config:
@@ -110,5 +111,6 @@ spec:
           - path: /data
             readOnly: true
       metadata:
+        type: emptyDir
         globalMounts:
           - path: /config/metadata
