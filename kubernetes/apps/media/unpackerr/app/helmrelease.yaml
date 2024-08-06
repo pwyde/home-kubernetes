@@ -86,6 +86,8 @@ spec:
             interval: 1m
             scrapeTimeout: 10s
     persistence:
+      logs:
+        type: emptyDir
       media:
         type: nfs
         server: ${TRUENAS_IP}
