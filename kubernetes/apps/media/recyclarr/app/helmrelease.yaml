@@ -64,6 +64,7 @@ spec:
         runAsGroup: &gid 5000
         fsGroup: *gid
         fsGroupChangePolicy: OnRootMismatch
+        supplementalGroups: [10000]
         seccompProfile: { type: RuntimeDefault }
     persistence:
       config:

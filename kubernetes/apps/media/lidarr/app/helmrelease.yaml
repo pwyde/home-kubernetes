@@ -46,6 +46,8 @@ spec:
               repository: ghcr.io/onedr0p/lidarr-develop
               tag: 2.5.0.4277@sha256:dcc8ed7213f037e0f97c8117fe0e7703dbc47b211d04bf949b6ac8aa6b7b31a0
             env:
+              TZ: ${TIMEZONE}
+              UMASK: 002
               LIDARR__APP__INSTANCENAME: Lidarr
               LIDARR__APP__THEME: dark
               LIDARR__AUTH__METHOD: External
@@ -54,7 +56,6 @@ spec:
               LIDARR__LOG__LEVEL: info
               LIDARR__SERVER__PORT: &port 80
               LIDARR__UPDATE__BRANCH: develop
-              TZ: ${TIMEZONE}
             envFrom: *envFrom
             probes:
               liveness: &probes

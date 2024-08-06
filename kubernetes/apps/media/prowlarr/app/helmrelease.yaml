@@ -46,6 +46,7 @@ spec:
               repository: ghcr.io/onedr0p/prowlarr-develop
               tag: 1.21.2.4649@sha256:d82c09f83e1f7ec200eb99832d3eb05cbb6b59da9c5d819abe648b4199d102c5
             env:
+              TZ: ${TIMEZONE}
               PROWLARR__APP__INSTANCENAME: Prowlarr
               PROWLARR__APP__THEME: dark
               PROWLARR__AUTH__METHOD: External
@@ -54,7 +55,6 @@ spec:
               PROWLARR__LOG__LEVEL: info
               PROWLARR__SERVER__PORT: &port 80
               PROWLARR__UPDATE__BRANCH: develop
-              TZ: ${TIMEZONE}
             envFrom: *envFrom
             probes:
               liveness: &probes

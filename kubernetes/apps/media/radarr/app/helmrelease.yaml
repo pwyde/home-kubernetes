@@ -46,6 +46,8 @@ spec:
               repository: ghcr.io/onedr0p/radarr-develop
               tag: 5.8.3.8933@sha256:da6094f6cc4dc95af194612a8a4d7db4fc27ff4a6e5748c2e6d5dd7be9ed69a7
             env:
+              TZ: ${TIMEZONE}
+              UMASK: 002
               RADARR__APP__INSTANCENAME: Radarr
               RADARR__APP__THEME: dark
               RADARR__AUTH__METHOD: External
@@ -54,7 +56,6 @@ spec:
               RADARR__LOG__LEVEL: info
               RADARR__SERVER__PORT: &port 80
               RADARR__UPDATE__BRANCH: develop
-              TZ: ${TIMEZONE}
             envFrom: *envFrom
             probes:
               liveness: &probes
