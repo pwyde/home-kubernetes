@@ -5,6 +5,7 @@ resources:
   - ./helmrelease.yaml
   - ./pgadmin-secret.sops.yaml
   - ./pvc.yaml
+  - ../../../../templates/gatus/internal
 configMapGenerator:
   - name: pgadmin-config
     files:
