@@ -47,17 +47,13 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: pushover
-  - name: radarr
-    group: guarded
-    url: 192.168.20.1
+  - name: echo-server
+    group: external
+    url: "https://echo-server.${SECRET_DOMAIN}"
     interval: 1m
-    ui:
-      hide-hostname: false
-      hide-url: false
-    dns:
-      query-name: "radarr.${SECRET_DOMAIN}"
-      query-type: A
+    client:
+      dns-resolver: tcp://1.1.1.1:53
     conditions:
-      - "len([BODY]) == 0"
+      - "[STATUS] == ${GATUS_STATUS:-200}"
     alerts:
       - type: pushover
