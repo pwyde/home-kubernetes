@@ -131,6 +131,8 @@ spec:
           - hosts:
               - *host
     persistence:
+      config:
+        type: emptyDir
       gatus-config:
         type: configMap
         name: gatus-config
