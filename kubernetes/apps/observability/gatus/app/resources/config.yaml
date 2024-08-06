@@ -69,7 +69,7 @@ endpoints:
       hide-hostname: false
       hide-url: false
     dns:
-      query-name: "${GATUS_SUBDOMAIN:-radarr.${SECRET_DOMAIN}"
+      query-name: "radarr.${SECRET_DOMAIN}"
       query-type: A
     conditions:
       - "len([BODY]) == 0"
