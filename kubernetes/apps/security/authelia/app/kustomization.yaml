@@ -5,6 +5,7 @@ resources:
   - ./authelia-oidc-jwks-key.sops.yaml
   - ./authelia-secret.sops.yaml
   - ./helmrelease.yaml
+  - ../../../../templates/gatus/internal
 configMapGenerator:
   - name: authelia-config
     files:
