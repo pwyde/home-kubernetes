@@ -5,6 +5,7 @@ resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
   - ./radarr-secret.sops.yaml
+  - ../../../../templates/gatus/internal
 configMapGenerator:
   - name: radarr-pushover-notify
     files:

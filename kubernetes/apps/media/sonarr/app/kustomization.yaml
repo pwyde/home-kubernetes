@@ -5,6 +5,7 @@ resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
   - ./sonarr-secret.sops.yaml
+  - ../../../../templates/gatus/internal
 configMapGenerator:
   - name: sonarr-pushover-notify
     files:

@@ -5,3 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./prowlarr-secret.sops.yaml
   - ./pvc.yaml
+  - ../../../../templates/gatus/internal

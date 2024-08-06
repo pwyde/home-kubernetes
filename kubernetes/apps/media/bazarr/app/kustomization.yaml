@@ -5,6 +5,7 @@ resources:
   - ./bazarr-secret.sops.yaml
   - ./helmrelease.yaml
   - ./pvc.yaml
+  - ../../../../templates/gatus/internal
 configMapGenerator:
   - name: bazarr-subcleaner
     files:
