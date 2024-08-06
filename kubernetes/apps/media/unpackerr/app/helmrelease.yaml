@@ -40,8 +40,8 @@ spec:
               UMASK: 002
               UN_DEBUG: true
               UN_LOG_FILE: /logs/unpackerr.log
-              UN_RADARR_0_URL: http://radarr.default.svc.cluster.local
-              UN_SONARR_0_URL: http://sonarr.default.svc.cluster.local
+              UN_RADARR_0_URL: http://radarr.media.svc.cluster.local
+              UN_SONARR_0_URL: http://sonarr.media.svc.cluster.local
               UN_WEBSERVER_METRICS: true
               UN_WEBSERVER_LOG_FILE: /logs/webserver.log
             envFrom:
