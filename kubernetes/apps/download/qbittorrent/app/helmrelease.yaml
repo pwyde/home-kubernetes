@@ -132,8 +132,9 @@ spec:
                   periodSeconds: 10
             securityContext:
               runAsNonRoot: true
-              runAsUser: 1000
-              runAsGroup: 4000
+              runAsUser: &uid 1000
+              runAsGroup: &gid 4000
+              fsGroup: *gid
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
