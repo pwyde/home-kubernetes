@@ -55,7 +55,7 @@ endpoints:
       hide-hostname: false
       hide-url: false
     dns:
-      query-name: "sonarr.${SECRET_DOMAIN}"
+      query-name: "${GATUS_SUBDOMAIN:-sonarr.${SECRET_DOMAIN}"
       query-type: A
     conditions:
       - "len([BODY]) == 0"
