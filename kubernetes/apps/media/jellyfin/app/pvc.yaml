@@ -9,7 +9,7 @@ metadata:
 spec:
   storageClassName: truenas-ssd-nfs
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 10Gi
