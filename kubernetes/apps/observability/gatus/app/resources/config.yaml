@@ -61,3 +61,17 @@ endpoints:
       - "len([BODY]) == 0"
     alerts:
       - type: pushover
+  - name: radarr
+    group: guarded
+    url: 192.168.20.1
+    interval: 1m
+    ui:
+      hide-hostname: false
+      hide-url: false
+    dns:
+      query-name: "${GATUS_SUBDOMAIN:-radarr.${SECRET_DOMAIN}"
+      query-type: A
+    conditions:
+      - "len([BODY]) == 0"
+    alerts:
+      - type: pushover
