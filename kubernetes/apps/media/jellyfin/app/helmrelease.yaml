@@ -126,8 +126,6 @@ spec:
         path: ${NFS_PATH_MEDIA}
         globalMounts:
           - path: /data
-      transcode:
-        type: emptyDir
 
       # - $APPDATADIR/jellyfin/cache:/cache
       # - $APPDATADIR/jellyfin/config:/config
