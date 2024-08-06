@@ -5,6 +5,7 @@ resources:
   - ./helmrelease.yaml
   - ./pvc.yaml
   - ./qbittorrent-secret.sops.yaml
+  - ../../../../templates/gatus/internal
 configMapGenerator:
   - name: qbittorrent-loki-rules
     files:
