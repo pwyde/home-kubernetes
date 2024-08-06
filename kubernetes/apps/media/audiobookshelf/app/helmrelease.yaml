@@ -111,6 +111,5 @@ spec:
           - path: /data
             readOnly: true
       metadata:
-        type: emptyDir
         globalMounts:
           - path: /config/metadata
