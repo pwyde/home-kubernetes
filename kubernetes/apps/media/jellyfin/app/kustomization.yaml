@@ -4,6 +4,5 @@ kind: Kustomization
 namespace: media
 resources:
   - ./helmrelease.yaml
-  - ./jellyfin-secret.sops.yaml
   - ./pvc.yaml
   - ../../../../templates/gatus/internal
