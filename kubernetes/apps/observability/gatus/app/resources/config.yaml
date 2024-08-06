@@ -47,3 +47,17 @@ endpoints:
       - "[STATUS] == 200"
     alerts:
       - type: pushover
+  - name: sonarr
+    group: guarded
+    url: 1.1.1.1
+    interval: 1m
+    ui:
+      hide-hostname: true
+      hide-url: true
+    dns:
+      query-name: "sonarr.${SECRET_DOMAIN}"
+      query-type: A
+    conditions:
+      - "len([BODY]) == 0"
+    alerts:
+      - type: pushover
