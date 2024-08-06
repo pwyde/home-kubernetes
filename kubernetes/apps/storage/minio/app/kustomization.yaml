@@ -5,3 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./minio-secret.sops.yaml
   - ./pvc.yaml
+  - ../../../../templates/gatus/internal
