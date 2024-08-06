@@ -40,6 +40,7 @@ spec:
             env:
               TZ: ${TIMEZONE}
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+              JELLYFIN_CACHE_DIR: /config/cache
               JELLYFIN_FFmpeg__probesize: 50000000
               JELLYFIN_FFmpeg__analyzeduration: 50000000
               JELLYFIN_PublishedServerUrl: https://jellyfin-k8s.${SECRET_DOMAIN}
@@ -114,9 +115,8 @@ spec:
               - *host
     persistence:
       cache:
-        type: emptyDir
         globalMounts:
-          - path: /cache
+          - path: /config/cache
       config:
         existingClaim: jellyfin-config
       media:
@@ -124,8 +124,15 @@ spec:
         server: ${TRUENAS_IP}
         path: ${NFS_PATH_MEDIA}
         globalMounts:
-          - path: /data/media
+          - path: /data
       transcode:
         type: emptyDir
-        globalMounts:
-          - path: /transcode
+
+      # - $APPDATADIR/jellyfin/cache:/cache
+      # - $APPDATADIR/jellyfin/config:/config
+      # - $APPDATADIR/jellyfin/data:/data
+      # - $MEDIADIR:/data/media
+      # JELLYFIN_CACHE_DIR: /cache
+      # JELLYFIN_DATA_DIR: /data
+      # JELLYFIN_CONFIG_DIR: /config
+      # JELLYFIN_LOG_DIR: /data/log

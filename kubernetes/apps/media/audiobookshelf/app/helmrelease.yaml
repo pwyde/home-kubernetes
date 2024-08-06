@@ -40,7 +40,7 @@ spec:
             env:
               TZ: ${TIMEZONE}
               CONFIG_PATH: /config
-              METADATA_PATH: /metadata
+              METADATA_PATH: /config/metadata
             probes:
               liveness: &probes
                 enabled: true
@@ -98,13 +98,10 @@ spec:
               - *host
     persistence:
       cache:
-        type: emptyDir
         globalMounts:
           - path: /.npm
       config:
         existingClaim: audiobookshelf-config
-        globalMounts:
-          - path: /config
       media:
         type: nfs
         server: ${TRUENAS_IP}
@@ -113,6 +110,5 @@ spec:
           - path: /data
             readOnly: true
       metadata:
-        existingClaim: audiobookshelf-metadata
         globalMounts:
-          - path: /metadata
+          - path: /config/metadata

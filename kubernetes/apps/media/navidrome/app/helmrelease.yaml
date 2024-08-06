@@ -96,12 +96,8 @@ spec:
           - hosts:
               - *host
     persistence:
-      config:
-        type: emptyDir
       data:
         existingClaim: navidrome-data
-        globalMounts:
-          - path: /data
       media:
         type: nfs
         server: ${TRUENAS_IP}
