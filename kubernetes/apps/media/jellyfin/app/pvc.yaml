@@ -5,9 +5,9 @@ metadata:
   name: jellyfin-config
   namespace: media
   annotations:
-    volume.beta.kubernetes.io/storageClassName: "truenas-ssd-iscsi"
+    volume.beta.kubernetes.io/storageClassName: "truenas-ssd-nfs"
 spec:
-  storageClassName: truenas-ssd-iscsi
+  storageClassName: truenas-ssd-nfs
   accessModes:
     - ReadWriteOnce
   resources:
