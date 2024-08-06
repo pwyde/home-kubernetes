@@ -129,7 +129,7 @@ spec:
                 enabled: true
                 spec:
                   failureThreshold: 30
-                  periodSeconds: 5
+                  periodSeconds: 10
             securityContext:
               runAsNonRoot: true
               runAsUser: 1000
