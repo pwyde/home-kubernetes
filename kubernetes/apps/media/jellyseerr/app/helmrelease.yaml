@@ -70,7 +70,7 @@ spec:
         supplementalGroups: [10000]
         seccompProfile: { type: RuntimeDefault }
     service:
-      main:
+      app:
         controller: *app
         ports:
           http:
