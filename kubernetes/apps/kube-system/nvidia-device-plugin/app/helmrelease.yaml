@@ -26,11 +26,11 @@ spec:
     - name: node-feature-discovery
       namespace: kube-system
   values:
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: nvidia-helm-values
     config:
       name: nvidia-helm-values
     runtimeClassName: nvidia
-    nodeSelector:
-      nvidia.feature.node.kubernetes.io/gpu: "true"
     gfd:
       enabled: true
     nfd:
