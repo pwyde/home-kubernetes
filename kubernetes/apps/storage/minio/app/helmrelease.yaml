@@ -88,8 +88,8 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: &uid 5000
-        runAsGroup: &gid 5000
-        fsGroup: *gid
+        runAsGroup: *uid
+        fsGroup: *uid
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile: { type: RuntimeDefault }
     service:
