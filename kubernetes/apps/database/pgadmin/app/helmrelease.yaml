@@ -71,8 +71,8 @@ spec:
         # https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html#mapped-files-and-directories
         runAsNonRoot: true
         runAsUser: &uid 5050
-        runAsGroup: &gid 5050
-        fsGroup: *gid
+        runAsGroup: *uid
+        fsGroup: *uid
         fsGroupChangePolicy: OnRootMismatch
         supplementalGroups: [10000]
         seccompProfile: { type: RuntimeDefault }
