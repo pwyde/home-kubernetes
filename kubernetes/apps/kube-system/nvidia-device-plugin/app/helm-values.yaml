@@ -1,11 +1,10 @@
 ---
 version: v1
 flags:
-  migStrategy: "single"
+  migStrategy: "none"
 sharing:
   timeSlicing:
     renameByDefault: false
-    failRequestsGreaterThanOne: false
     resources:
       - name: nvidia.com/gpu
         replicas: 4
