@@ -1,7 +1,7 @@
 ---
 version: v1
 flags:
-  migStrategy: single
+  migStrategy: none
 sharing:
   timeSlicing:
     resources:
