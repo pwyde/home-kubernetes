@@ -7,7 +7,7 @@ spec:
   rules:
     - name: nvidia.gpu
       labels:
-        nvidia.com/gpu.present: "true"
+        nvidia.feature.node.kubernetes.io/gpu: "true"
       matchFeatures:
         - feature: pci.device
           matchExpressions:
