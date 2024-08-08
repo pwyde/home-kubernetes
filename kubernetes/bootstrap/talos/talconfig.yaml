@@ -147,7 +147,7 @@ nodes:
   - hostname: "k8s-5"
     ipAddress: "192.168.20.25"
     installDisk: "/dev/sda"
-    talosImageURL: factory.talos.dev/installer/2d9d79fe710caccded6d4b221e24a5e8316073f66b3061b6f2c49de07684c812
+    talosImageURL: factory.talos.dev/installer/3d572bade939d3fe0ca708c296bd33493987a49bc2f4cc7593d7cedb034750bc
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
@@ -168,10 +168,29 @@ nodes:
           - network: 10.0.100.0/24
             gateway: "10.0.100.1"
         mtu: 1500
+    kernelModules:
+      - name: nvidia
+      - name: nvidia_uvm
+      - name: nvidia_drm
+      - name: nvidia_modeset
     schematic:
       customization:
         extraKernelArgs:
           - net.ifnames=0
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/amd-ucode
+            - siderolabs/iscsi-tools
+            - siderolabs/nonfree-kmod-nvidia
+            - siderolabs/nvidia-container-toolkit
+            - siderolabs/qemu-guest-agent
+            - siderolabs/util-linux-tools
+    patches:
+      - |-
+        machine:
+          sysctls:
+            net.core.bpf_jit_harden: 1
+            vm.nr_hugepages: "1024"
 
 # Global patches
 patches:
