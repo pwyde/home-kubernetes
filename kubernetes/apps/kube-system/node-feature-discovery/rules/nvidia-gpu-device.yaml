@@ -7,6 +7,8 @@ spec:
   rules:
     - name: nvidia.com/gpu
       labels:
+        # Label below must be set explicitely.
+        # Ref: https://github.com/NVIDIA/k8s-device-plugin/blob/v0.15.0/deployments/helm/nvidia-device-plugin/values.yaml#L62-L82
         nvidia.com/gpu.present: "true"
       matchFeatures:
         - feature: pci.device
