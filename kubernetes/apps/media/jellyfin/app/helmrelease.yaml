@@ -79,6 +79,9 @@ spec:
               limits:
                 memory: 4Gi
     defaultPodOptions:
+      nodeSelector:
+        nvidia.com/gpu.present: "true"
+      runtimeClassName: nvidia
       securityContext:
         runAsNonRoot: true
         runAsUser: &uid 1000
