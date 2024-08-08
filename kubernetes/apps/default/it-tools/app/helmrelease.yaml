@@ -51,11 +51,8 @@ spec:
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
-        runAsUser: &uid 5000
-        runAsGroup: &gid 5000
-        fsGroup: *gid
-        fsGroupChangePolicy: OnRootMismatch
-        supplementalGroups: [10000]
+        runAsUser: &uid 65534
+        runAsGroup: *uid
         seccompProfile: { type: RuntimeDefault }
     service:
       app:
