@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nvidia-device-plugin
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: nvidia-device-plugin
+      version: 0.16.1
+      sourceRef:
+        kind: HelmRepository
+        name: nvidia-device-plugin
+        namespace: flux-system
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  dependsOn:
+    - name: node-feature-discovery
+      namespace: kube-system
+  values:
+    config:
+      name: nvidia-helm-values
+    runtimeClassName: nvidia
+    nodeSelector:
+      nvidia.feature.node.kubernetes.io/gpu: "true"
+    gfd:
+      enabled: true
+    nfd:
+      enabled: false
+    resources:
+      requests:
+        cpu: 100m
+      limits:
+        memory: 512Mi
